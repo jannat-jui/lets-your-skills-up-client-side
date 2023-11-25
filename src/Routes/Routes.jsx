@@ -9,6 +9,7 @@ import StudentDashboard from "../Dashboard/StudentDashboard/StudentDashboard";
 import Dashboard from "../Dashboard/Dashboard";
 import ClassDetails from "../Components/Class Details/ClassDetails";
 import AllUsers from "../Dashboard/Admin Dashboard/AllUsers";
+import TeacherRequest from "../Dashboard/Admin Dashboard/Teacher Request/TeacherRequest";
 
 const router = createBrowserRouter([
     {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
             {
                 path: 'users',
                 element: <AllUsers/>
+            },
+            {
+                path: 'teacher-request',
+                element: <TeacherRequest/>
             }
         ]
     }

@@ -36,11 +36,11 @@ const TechTOLetsSkillUp = () => {
         mutate({
             name: data.name,
             photo: data.photo,
+            email: user.email,
             experince: data.experince,
             title: data.title,
             category: data.category,
             status: 'pending',
-            role: 'teacher'
 
 
           })

@@ -1,10 +1,11 @@
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../Hooks/useAdmin";
+import useTeacher from "../Hooks/useTeacher";
 
 
 const Dashboard = () => {
-    const isAdmin = true;
-    const teacher = 'nahid'
+    const [isAdmin] = useAdmin();
+    const [isTeacher] = useTeacher();
     return (
         <div className="flex">
         <div className="w-[20rem] min-h-screen bg-[#D1A054] pt-12 px-8">
@@ -18,7 +19,7 @@ const Dashboard = () => {
                 {
                      isAdmin ? <>
                      <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base" to="/dashboard/adminhome">Admin Home</NavLink></li>
-                     <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base" to="/dashboard/adminhome">Teacher Requests</NavLink></li>
+                     <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base" to="/dashboard/teacher-request">Teacher Requests</NavLink></li>
                      <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base" to="/dashboard/users">All Users</NavLink></li>
                  
                      </>
@@ -27,7 +28,7 @@ const Dashboard = () => {
 
                      :
 
-                     teacher==='nahid' ? 'oka teacher' : 
+                     isTeacher ? 'oka teacher' : 
                      <>
                     <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base hover:bg-white " to="/dashboard/userhome">User Home</NavLink></li>
                     <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base hover:bg-white " to="/dashboard/userhome">My Enroll Class</NavLink></li>
