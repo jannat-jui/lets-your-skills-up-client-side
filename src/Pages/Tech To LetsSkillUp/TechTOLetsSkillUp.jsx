@@ -2,6 +2,9 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form"
 import { AuthContext } from "../../Provider/AuthProvider";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import Swal from "sweetalert2";
 const TechTOLetsSkillUp = () => {
     const { user } = useContext(AuthContext);
     console.log(user)
@@ -12,8 +15,33 @@ const TechTOLetsSkillUp = () => {
         formState: { errors },
     } = useForm();
 
+    const { mutate } = useMutation({
+        mutationKey: ['food'],
+        mutationFn: (addingData) => {
+          return axios.post('http://localhost:5000/teacherrequest', addingData, { withCredentials: true, })
+        },
+        onSuccess: () => {
+          Swal.fire({
+            title: 'Success!',
+            text: 'Request Sent Successfully',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+          })
+        }
+    
+      })
+
     const onSubmit = (data) => {
         console.log(data)
+        mutate({
+            name: data.name,
+            photo: data.photo,
+            experince: data.experince,
+            title: data.title,
+            category: data.category,
+
+
+          })
          
     }
 
