@@ -39,6 +39,8 @@ const TechTOLetsSkillUp = () => {
             experince: data.experince,
             title: data.title,
             category: data.category,
+            status: 'pending',
+            role: 'teacher'
 
 
           })

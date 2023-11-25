@@ -3,7 +3,8 @@ import useAdmin from "../Hooks/useAdmin";
 
 
 const Dashboard = () => {
-    const [isAdmin] = useAdmin();
+    const isAdmin = true;
+    const teacher = 'nahid'
     return (
         <div className="flex">
         <div className="w-[20rem] min-h-screen bg-[#D1A054] pt-12 px-8">
@@ -15,16 +16,26 @@ const Dashboard = () => {
         
             <ul className="menu w-full px-0 mt-16">
                 {
-                    isAdmin ? <>
-                    <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base" to="/dashboard/adminhome">Admin Home</NavLink></li>
-                
-                    </>
-                    :
-                    <>
+                     isAdmin ? <>
+                     <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base" to="/dashboard/adminhome">Admin Home</NavLink></li>
+                     <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base" to="/dashboard/adminhome">Teacher Requests</NavLink></li>
+                     <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base" to="/dashboard/users">All Users</NavLink></li>
+                 
+                     </>
+
+
+
+                     :
+
+                     teacher==='nahid' ? 'oka teacher' : 
+                     <>
                     <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base hover:bg-white " to="/dashboard/userhome">User Home</NavLink></li>
+                    <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base hover:bg-white " to="/dashboard/userhome">My Enroll Class</NavLink></li>
+                    <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base hover:bg-white " to="/dashboard/userhome">Profile</NavLink></li>
                 
                     </>
                 }
+              
                 
                 <div className="divider"></div> 
                 

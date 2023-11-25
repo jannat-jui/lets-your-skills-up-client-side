@@ -49,7 +49,8 @@ const SignUp = () => {
           .then((() => {
             mutate({
               name: data.name,
-              email: data.email
+              email: data.email,
+              photo: data.image
             })
             navigate(from, {replace: true})
             reset()
@@ -63,7 +64,8 @@ const SignUp = () => {
         console.log(result.user)
         mutate({
           email: result.user?.email,
-          name: result.user?.displayName
+          name: result.user?.displayName,
+          photo: result.user?.photoURL,
         })
         navigate(from, { replace: true })
       })

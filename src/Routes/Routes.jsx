@@ -8,6 +8,7 @@ import TechTOLetsSkillUp from "../Pages/Tech To LetsSkillUp/TechTOLetsSkillUp";
 import StudentDashboard from "../Dashboard/StudentDashboard/StudentDashboard";
 import Dashboard from "../Dashboard/Dashboard";
 import ClassDetails from "../Components/Class Details/ClassDetails";
+import AllUsers from "../Dashboard/Admin Dashboard/AllUsers";
 
 const router = createBrowserRouter([
     {
@@ -49,6 +50,12 @@ const router = createBrowserRouter([
             {
                 path: 'student-dashboard',
                 element: <StudentDashboard/>
+            },
+
+            //admin dashbaord
+            {
+                path: 'users',
+                element: <AllUsers/>
             }
         ]
     }
