@@ -88,7 +88,7 @@ const SignUp = () => {
             <input type="text" {...register("image", { required: true })} name="image" className="file-input file-input-bordered file-input-warning w-full mt-2 h-[3.5rem]" />
           </div>
 
-          {errors.name && <span>This field is required</span>}
+          {errors.image && <span>This field is required</span>}
 
           <p className="text-[#444] mt-5 text-xl font-semibold">Email</p>
 
