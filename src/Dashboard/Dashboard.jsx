@@ -28,7 +28,14 @@ const Dashboard = () => {
 
                      :
 
-                     isTeacher ? 'oka teacher' : 
+                     isTeacher ? <>
+                     <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base hover:bg-white " to="/dashboard/addclass">Add Class</NavLink></li>
+                     <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base hover:bg-white " to="/dashboard/myclass">My Class</NavLink></li>
+                     <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base hover:bg-white " to="/dashboard/userhome">Profile</NavLink></li>
+                 
+                     </>
+                     
+                     : 
                      <>
                     <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base hover:bg-white " to="/dashboard/userhome">User Home</NavLink></li>
                     <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base hover:bg-white " to="/dashboard/userhome">My Enroll Class</NavLink></li>

@@ -1,0 +1,109 @@
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { useForm } from "react-hook-form";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import Swal from "sweetalert2";
+
+
+const AddClasses = () => {
+    const { user } = useContext(AuthContext);
+    console.log(user)
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+    } = useForm();
+
+    const { mutate } = useMutation({
+        mutationKey: ['food'],
+        mutationFn: (addingData) => {
+          return axios.post('http://localhost:5000/addclasses', addingData, { withCredentials: true, })
+        },
+        onSuccess: () => {
+          Swal.fire({
+            title: 'Success!',
+            text: 'Class Added Successfully',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+          })
+        }
+    
+      })
+
+    const onSubmit = (data) => {
+        console.log(data)
+        mutate({
+            name: data.name,
+            email: user.email,
+            title: data.title,
+            price: data.price,
+            description: data.description,
+            image: data.image,
+            status: 'pending'
+
+
+          })
+         
+    }
+    return (
+        <div className="w-[90vw] mx-auto mt-20">
+        <div className="w-[70vw] mx-auto">
+            <h1 className="text-black text-center text-[2.5rem] font-semibold">Add Classes</h1>
+
+            <form onSubmit={handleSubmit(onSubmit)}>
+                {/* title input  */}
+                <p className="text-[#444] mt-5 text-xl font-semibold">Class Title</p>
+
+                <input className="w-full mt-2 h-[3.5rem] text-gray-700 placeholder:text-[#A1A1A1] text-lg outline-none pl-[1.81rem] rounded-lg border-2 border-[#D0D0D0] bg-white" type="text" name="title" id="" placeholder="Class Title" {...register("title", { required: true })} />
+                {errors.title && <span>This field is required</span>}
+
+                {/* name input  */}
+                <p className="text-[#444] mt-5 text-xl font-semibold">Name</p>
+
+                <input className="w-full mt-2 h-[3.5rem] text-gray-700 placeholder:text-[#A1A1A1] text-lg outline-none pl-[1.81rem] rounded-lg border-2 border-[#D0D0D0] bg-white" type="text" name="name" id="" placeholder="Your name" {...register("name", { required: true })} readOnly defaultValue={user?.displayName} />
+                
+
+                {/* email input  */}
+                <p className="text-[#444] mt-5 text-xl font-semibold">Email</p>
+
+                <input className="w-full mt-2 h-[3.5rem] text-gray-700 placeholder:text-[#A1A1A1] text-lg outline-none pl-[1.81rem] rounded-lg border-2 border-[#D0D0D0] bg-white" type="email" name="email" id="" placeholder="Your email" {...register("email", { required: true })} defaultValue={user?.email} />
+
+                {/* price input  */}
+                <p className="text-[#444] mt-5 text-xl font-semibold">Price</p>
+
+                <input className="w-full mt-2 h-[3.5rem] text-gray-700 placeholder:text-[#A1A1A1] text-lg outline-none pl-[1.81rem] rounded-lg border-2 border-[#D0D0D0] bg-white" type="number" name="price" id="" placeholder="Enter Price" {...register("price", { required: true })} />
+
+
+                {/* Description input  */}
+
+                <p className="text-[#444] mt-5 text-xl font-semibold">Description</p>
+
+                <input className="w-full mt-2 h-[6.5rem] text-gray-700 placeholder:text-[#A1A1A1] text-lg outline-none pl-[1.81rem] rounded-lg border-2 border-[#D0D0D0] bg-white" type="text" name="description" id="" placeholder="Enter Description" {...register("description", { required: true })} />
+                {errors.description && <span>This field is required</span>}
+
+                {/* Image input  */}
+
+                <p className="text-[#444] mt-5 text-xl font-semibold">Image</p>
+
+                <input className="w-full mt-2 h-[3.5rem] text-gray-700 placeholder:text-[#A1A1A1] text-lg outline-none pl-[1.81rem] rounded-lg border-2 border-[#D0D0D0] bg-white" type="text" name="image" id="" placeholder="Enter Image" {...register("image", { required: true })} />
+                {errors.image && <span>This field is required</span>}
+
+                <input className="w-full mt-5 h-[3.5rem] btn btn-neutral border-none bg-[#D1A054B3] text-white text-xl font-bold" type="submit" id="" value="Add Class" />
+
+
+
+
+
+
+            </form>
+
+
+        </div>
+
+    </div>
+    );
+};
+
+export default AddClasses;
