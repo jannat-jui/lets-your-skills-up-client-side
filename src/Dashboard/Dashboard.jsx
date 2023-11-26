@@ -21,6 +21,8 @@ const Dashboard = () => {
                      <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base" to="/dashboard/adminhome">Admin Home</NavLink></li>
                      <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base" to="/dashboard/teacher-request">Teacher Requests</NavLink></li>
                      <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base" to="/dashboard/users">All Users</NavLink></li>
+                     <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base" to="/dashboard/classes">All Classes</NavLink></li>
+                     <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base" to="/dashboard/profile">Profile</NavLink></li>
                  
                      </>
 
@@ -38,7 +40,7 @@ const Dashboard = () => {
                      : 
                      <>
                     <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base hover:bg-white " to="/dashboard/userhome">User Home</NavLink></li>
-                    <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base hover:bg-white " to="/dashboard/userhome">My Enroll Class</NavLink></li>
+                    <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base hover:bg-white " to="/dashboard/enroll-classes">My Enroll Class</NavLink></li>
                     <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base hover:bg-white " to="/dashboard/userhome">Profile</NavLink></li>
                 
                     </>

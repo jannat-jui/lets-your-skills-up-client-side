@@ -1,10 +1,10 @@
 import AllClassesCard from "./AllClassesCard";
 
 
-const DisplayAllClasses = () => {
+const DisplayAllClasses = ({classs}) => {
     return (
         <div className="mt-32 grid">
-            <AllClassesCard/>
+            <AllClassesCard classs={classs}/>
             
         </div>
     );

@@ -12,6 +12,8 @@ import AllUsers from "../Dashboard/Admin Dashboard/AllUsers";
 import TeacherRequest from "../Dashboard/Admin Dashboard/Teacher Request/TeacherRequest";
 import AddClasses from "../Dashboard/Teacher Dashboard/AddClasses";
 import MyClass from "../Dashboard/Teacher Dashboard/My Class/MyClass";
+import AllClassesAdmin from "../Dashboard/Admin Dashboard/All Classes/AllClassesAdmin";
+import MyEnrollClasses from "../Dashboard/StudentDashboard/MyEnrollClasses/MyEnrollClasses";
 
 const router = createBrowserRouter([
     {
@@ -27,8 +29,9 @@ const router = createBrowserRouter([
                 element: <AllClasses/>
             },
             {
-                path: '/class-details',
-                element: <ClassDetails/>
+                path: '/all-classes/:id',
+                element: <ClassDetails/>,
+                loader: ({params}) => fetch(`http://localhost:5000/addclasses/adminroute/approved/${params.id}` )
             },
             {
                 path: '/techto-letsskillup',
@@ -54,6 +57,10 @@ const router = createBrowserRouter([
                 path: 'student-dashboard',
                 element: <StudentDashboard/>
             },
+            {
+                path: 'enroll-classes',
+                element: <MyEnrollClasses/>
+            },
 
             //admin dashbaord
             {
@@ -63,6 +70,10 @@ const router = createBrowserRouter([
             {
                 path: 'teacher-request',
                 element: <TeacherRequest/>
+            },
+            {
+                path: 'classes',
+                element: <AllClassesAdmin/>
             },
 
             // teacher dashboard

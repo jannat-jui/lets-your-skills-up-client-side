@@ -38,7 +38,18 @@ const MyClass = () => {
                         
                         <Typography className="flex gap-5">
                             
-                        <button className="mt-4 btn btn-error text-white text-lg flex-1">pending</button>
+                        {
+                            classs.status==='approved' && <button className="mt-4 btn btn-error text-white text-lg flex-1">Accepted</button> 
+                        
+                        }
+                        {
+                            classs.status==='rejected' && <button className="mt-4 btn btn-error text-white text-lg flex-1">Rejected</button> 
+                        
+                        }
+                        {
+                            classs.status==='pending' && <button className="mt-4 btn btn-error text-white text-lg flex-1">Pending</button> 
+                        
+                        }
                         <button className="mt-4 btn btn-error text-white text-lg flex-1">update</button>
                         <button className="mt-4 btn btn-error text-white text-lg flex-1">delete</button>
                         </Typography>

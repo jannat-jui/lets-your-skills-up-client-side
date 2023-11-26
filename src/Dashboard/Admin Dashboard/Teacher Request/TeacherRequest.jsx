@@ -20,50 +20,59 @@ const TeacherRequest = () => {
 
     const handleApprove = (teacher) => {
         axiosSecure.patch(`/teacherrequest/teacher/${teacher._id}`)
-        .then(res=>{
-            console.log(res.data)
-            if(res.data.modifiedCount > 0){
-                refetch()
-                alert('he is teacher now')
-                
-            }
-        })
+            .then(res => {
+                console.log(res.data)
+                if (res.data.modifiedCount > 0) {
+                    refetch()
+                    alert('he is teacher now')
+
+                }
+            })
     }
     return (
-        <div className="grid grid-cols-2">
-            {
-                teachers.map(teacher => <Card key={teacher._id} className="w-96">
-                    <CardHeader floated={false} className="h-80">
-                        <img src="https://docs.material-tailwind.com/img/team-3.jpg" alt="profile-picture" />
-                    </CardHeader>
-                    <CardBody className="text-center">
-                        <Typography variant="h4" color="blue-gray" className="mb-2">
-                            Natalie Paisley
-                        </Typography>
-                        <Typography color="blue-gray" className="font-medium" textGradient>
-                            Beginner Level Experience
-                        </Typography>
 
-                        <Typography variant="h5" color="blue-gray" className="mb-2 mt-3">
-                            Title: Web Development
-                        </Typography>
-                        <Typography color="blue-gray" className="font-medium" textGradient>
-                            CAtegory:
-                        </Typography>
+        <div>
+            <div className="overflow-x-auto rounded-tl-2xl rounded-tr-2xl mt-8">
+                <table className="table  rounded-tl-2xl rounded-tr-2xl">
+                    {/* head */}
+                    <thead className="bg-gray-400 h-[4.5rem] rounded-tl-2xl rounded-tr-2xl">
+                        <tr>
+                            <th className="text-white font-semibold"></th>
+                            <th className="text-white font-semibold">Name</th>
+                            <th className="text-white font-semibold">Image</th>
+                            <th className="text-white font-semibold">Experience</th>
+                            <th className="text-white font-semibold">Title</th>
+                            <th className="text-white font-semibold">Category</th>
+                            <th className="text-white font-semibold">Status</th>
+                            <th className="text-white font-semibold">Approve</th>
+                            <th className="text-white font-semibold">Rejeect</th>
 
-                        <Typography className="flex gap-5">
-                            {
-                                teacher.role === 'teacher' ? 'Teacher' :  <button onClick={() => handleApprove(teacher)} className="mt-4 btn btn-success text-white text-lg flex-1">Approve</button>
-                            }
-                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {/* row 1 */}
+                        {
+                            teachers.map((teacher, index) => <tr key={teacher._id}>
+                                <th>{index + 1}</th>
+                                <th>jannat jui</th>
+                                <td></td>
+                                <td>experce</td>
+                                <td>title</td>
+                                <td>category</td>
+                                <td>status</td>
+                                <td>{
+                                    teacher.role === 'teacher' ? 'Teacher' : <button onClick={() => handleApprove(teacher)} className="mt-4 btn btn-success text-white text-lg flex-1">Approve</button>
+                                }</td>
 
-                            <button className="mt-4 btn btn-error text-white text-lg flex-1">Reject</button>
-                        </Typography>
+                                <td><button className="mt-4 btn btn-error text-white text-lg flex-1">Reject</button></td>
 
-                    </CardBody>
 
-                </Card>)
-            }
+                            </tr>)
+                        }
+
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };

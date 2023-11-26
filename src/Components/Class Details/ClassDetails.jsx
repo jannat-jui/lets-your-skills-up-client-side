@@ -6,7 +6,10 @@ import {
     CardBody,
     Typography,
 } from "@material-tailwind/react";
+import { useLoaderData } from "react-router-dom";
 const ClassDetails = () => {
+    const classs = useLoaderData();
+    console.log(classs)
     return (
         <div>
             <Card className="w-full max-w-[80vw] mx-auto mt-32 flex-row">
@@ -29,7 +32,7 @@ const ClassDetails = () => {
                         </div>
                     </Typography>
                     <Typography variant="h4" color="blue-gray" className="mb-2">
-                        Lyft launching cross-platform service this week
+                        {classs.title}
                     </Typography>
                     <Typography color="gray" className="mb-8 font-normal">
                         Like so many organizations these days, Autodesk is a company in

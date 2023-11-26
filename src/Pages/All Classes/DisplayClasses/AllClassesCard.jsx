@@ -2,7 +2,8 @@
 import { Tooltip } from "react-tooltip";
 import coursetext from "../../../assets/images/coursetest.png"
 import user from "../../../assets/images/user.svg"
-const AllClassesCard = () => {
+import { Link } from "react-router-dom";
+const AllClassesCard = ({classs}) => {
     return (
         <div className="w-[23rem] h-[31rem] rounded-lg border-2 border-[#FB9C46] rounded-tr-[5rem] bg-white">
 
@@ -19,7 +20,6 @@ const AllClassesCard = () => {
             <div className="px-4 mt-4 space-y-3">
                 <h1 className="w-[20rem] text-xl font-bold">Product Management Basic - Course</h1>
 
-                <h2>Instructor: </h2>
                 <p>Instructor Name</p>
 
                 <div className="h-[3rem] overflow-hidden cursor-pointer">
@@ -32,7 +32,7 @@ const AllClassesCard = () => {
 
                 <div className="flex justify-between items-center">
                     <p className="text-[#DC4298] font-bold text-lg">$ 380</p>
-                    <button className="border-2 border-[#DC4298] btn btn-outline rounded-lg">Enroll</button>
+                    <Link to={`/all-classes/${classs._id}`}><button className="border-2 border-[#DC4298] btn btn-outline rounded-lg">Enroll</button></Link>
                 </div>
             </div>
 

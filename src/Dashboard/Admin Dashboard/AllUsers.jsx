@@ -26,6 +26,13 @@ const AllUsers = () => {
     }
     return (
         <div>
+            <div>
+            <form onSubmit={handleSearch} className="flex mt-6">
+                            <input type="text" name="search" placeholder="Search Here" className="input input-bordered input-success w-full rounded-r-none max-w-xs bg-white" />
+                            
+                            <input className="btn rounded-l-none  btn-success text-black capitalize text-lg" type="submit" value="search" />
+                            </form>
+            </div>
             <div className="overflow-x-auto rounded-tl-2xl rounded-tr-2xl mt-8">
                         <table className="table  rounded-tl-2xl rounded-tr-2xl">
                             {/* head */}
