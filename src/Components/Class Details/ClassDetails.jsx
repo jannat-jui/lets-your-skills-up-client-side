@@ -6,7 +6,7 @@ import {
     CardBody,
     Typography,
 } from "@material-tailwind/react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 const ClassDetails = () => {
     const classs = useLoaderData();
     console.log(classs)
@@ -48,7 +48,7 @@ const ClassDetails = () => {
 
                     <Typography className=" flex justify-between items-center gap-3">
                        <p className="text-[#FB9C46] font-bold text-3xl">$ 300</p>
-                       <button className="btn btn-neutral bg-[#FB9C46] border-none text-white text-lg w-[9rem]">Pay</button>
+                      <Link to={`/payment/${classs._id}`}> <button className="btn btn-neutral bg-[#FB9C46] border-none text-white text-lg w-[9rem]">Pay</button></Link>
                     </Typography>
                     
 

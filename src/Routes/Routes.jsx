@@ -15,6 +15,8 @@ import MyClass from "../Dashboard/Teacher Dashboard/My Class/MyClass";
 import AllClassesAdmin from "../Dashboard/Admin Dashboard/All Classes/AllClassesAdmin";
 import MyEnrollClasses from "../Dashboard/StudentDashboard/MyEnrollClasses/MyEnrollClasses";
 import UpdateClass from "../Dashboard/Teacher Dashboard/My Class/Update Class/UpdateClass";
+import ClassDetailsTeacher from "../Dashboard/Teacher Dashboard/Class Details/ClassDetailsTeacher";
+import Payment from "../Dashboard/StudentDashboard/Payment/Payment";
 
 const router = createBrowserRouter([
     {
@@ -32,7 +34,12 @@ const router = createBrowserRouter([
             {
                 path: '/all-classes/:id',
                 element: <ClassDetails/>,
-                loader: ({params}) => fetch(`http://localhost:5000/addclasses/adminroute/approved/${params.id}` )
+                loader: ({params}) => fetch(`http://localhost:5000/addclasses/adminroute/approved/${params.id}` , {credentials: 'include'} )
+            },
+            {
+                path: '/payment/:id',
+                element: <Payment/>,
+                loader: ({params}) => fetch(`http://localhost:5000/addclasses/adminroute/approved/${params.id}`, {credentials: 'include'} )
             },
             {
                 path: '/techto-letsskillup',
@@ -90,6 +97,10 @@ const router = createBrowserRouter([
             {
                 path: 'update-class/:id',
                 element: <UpdateClass/>
+            },
+            {
+                path: 'myclass/:id',
+                element: <ClassDetailsTeacher/>
             }
 
         ]

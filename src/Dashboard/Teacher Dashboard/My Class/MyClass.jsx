@@ -41,7 +41,7 @@ const MyClass = () => {
     return (
         <div className="grid grid-cols-2">
             {
-                classs.map(classs => <Card key={classs._id} className="w-96">
+                classs.map(classss => <Card key={classss._id} className="w-96">
                     <CardHeader floated={false} className="h-80">
                         <img src="https://docs.material-tailwind.com/img/team-3.jpg" alt="profile-picture" />
                     </CardHeader>
@@ -68,24 +68,29 @@ const MyClass = () => {
                         <Typography className="flex gap-5">
                             
                         {
-                            classs.status==='approved' && <button className="mt-4 btn btn-error text-white text-lg flex-1">Accepted</button> 
+                            classss.status==='approved' && <button className="mt-4 btn btn-error text-white text-lg flex-1">Accepted</button> 
                         
                         }
                         {
-                            classs.status==='rejected' && <button className="mt-4 btn btn-error text-white text-lg flex-1">Rejected</button> 
+                            classss.status==='rejected' && <button className="mt-4 btn btn-error text-white text-lg flex-1">Rejected</button> 
                         
                         }
                         {
-                            classs.status==='pending' && <button className="mt-4 btn btn-error text-white text-lg flex-1">Pending</button> 
+                            classss.status==='pending' && <button className="mt-4 btn btn-error text-white text-lg flex-1">Pending</button> 
                         
                         }
-                        <Link to={`/dashboard/update-class/${classs._id}`}><button className="mt-4 btn btn-error text-white text-lg flex-1">Update</button></Link>
-                        <button onClick={()=>handleDeleteItem(classs)} className="mt-4 btn btn-error text-white text-lg flex-1">Delete</button>
+                        <Link to={`/dashboard/update-class/${classss._id}`}><button className="mt-4 btn btn-error text-white text-lg flex-1">Update</button></Link>
+                        <button onClick={()=>handleDeleteItem(classss)} className="mt-4 btn btn-error text-white text-lg flex-1">Delete</button>
                         </Typography>
 
                         <Typography color="blue-gray" className="font-medium" textGradient>
-                        <button className="mt-4 btn btn-error text-white text-lg w-full">See Details</button>
+                        {
+                            classss.status==='approved' ? <Link to={`/dashboard/myclass/${classss._id}`}><button className="mt-4 btn btn-error text-white text-lg w-full">See Details</button></Link>
+                            :
+                            <button disabled className="mt-4 btn btn-error text-white text-lg w-full">See Details</button>
+                        }
                         </Typography>
+                        
 
                     </CardBody>
 
