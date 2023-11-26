@@ -1,13 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { useState } from "react";
 
 
 const AllUsers = () => {
+    const [search, setSearch] = useState('')
+
+    const handleSearch = (e)=>{
+        e.preventDefault();
+         const search = e.target.search.value;
+         setSearch(search)
+    }
     const axiosSecure = useAxiosSecure()
     const { data: users = [], refetch } = useQuery({
-        queryKey: ['users'],
+        queryKey: ['users', search],
         queryFn: async () => {
-            const res = await axiosSecure.get('/users')
+            const res = await axiosSecure.get(`/users?search=${search.toString()}`)
             return res.data;
         }
     })
