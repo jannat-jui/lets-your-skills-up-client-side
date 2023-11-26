@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useClass from "../../../Hooks/useClass";
 import {
     Card,
@@ -5,10 +6,38 @@ import {
     CardBody,
     Typography,
 } from "@material-tailwind/react";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const MyClass = () => {
     const [classs, refetch] = useClass();
     console.log(classs)
+    const axiosSecure = useAxiosSecure();
+
+    const handleDeleteItem = (item) => {
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!"
+        }).then(async (result) => {
+          if (result.isConfirmed) {
+            const res = await axiosSecure.delete(`/addclasses/${item._id}`)
+            // console.log(res.data)
+            if (res.data.deletedCount > 0) {
+              refetch();
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+              });
+            }
+          }
+        });
+      }
     return (
         <div className="grid grid-cols-2">
             {
@@ -50,8 +79,8 @@ const MyClass = () => {
                             classs.status==='pending' && <button className="mt-4 btn btn-error text-white text-lg flex-1">Pending</button> 
                         
                         }
-                        <button className="mt-4 btn btn-error text-white text-lg flex-1">update</button>
-                        <button className="mt-4 btn btn-error text-white text-lg flex-1">delete</button>
+                        <Link to={`/dashboard/update-class/${classs._id}`}><button className="mt-4 btn btn-error text-white text-lg flex-1">Update</button></Link>
+                        <button onClick={()=>handleDeleteItem(classs)} className="mt-4 btn btn-error text-white text-lg flex-1">Delete</button>
                         </Typography>
 
                         <Typography color="blue-gray" className="font-medium" textGradient>

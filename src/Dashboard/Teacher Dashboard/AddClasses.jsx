@@ -4,11 +4,13 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const AddClasses = () => {
     const { user } = useContext(AuthContext);
     console.log(user)
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -23,11 +25,17 @@ const AddClasses = () => {
         },
         onSuccess: () => {
           Swal.fire({
-            title: 'Success!',
-            text: 'Class Added Successfully',
-            icon: 'success',
-            confirmButtonText: 'Ok'
-          })
+            title: "Successfully Requesst Sent",
+            text: "Wait for admin approval",
+            icon: "success",
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "OK"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              navigate('/dashboard/myclass')
+            }
+          });
         }
     
       })
@@ -62,13 +70,13 @@ const AddClasses = () => {
                 {/* name input  */}
                 <p className="text-[#444] mt-5 text-xl font-semibold">Name</p>
 
-                <input className="w-full mt-2 h-[3.5rem] text-gray-700 placeholder:text-[#A1A1A1] text-lg outline-none pl-[1.81rem] rounded-lg border-2 border-[#D0D0D0] bg-white" type="text" name="name" id="" placeholder="Your name" {...register("name", { required: true })} readOnly defaultValue={user?.displayName} />
+                <input className="w-full mt-2 h-[3.5rem] text-gray-700 placeholder:text-[#A1A1A1] text-lg outline-none pl-[1.81rem] rounded-lg border-2 border-[#D0D0D0] bg-white" type="text" name="name" id="" placeholder="Your name" {...register("name", { required: true })} readOnly defaultValue={user?.displayName}/>
                 
 
                 {/* email input  */}
                 <p className="text-[#444] mt-5 text-xl font-semibold">Email</p>
 
-                <input className="w-full mt-2 h-[3.5rem] text-gray-700 placeholder:text-[#A1A1A1] text-lg outline-none pl-[1.81rem] rounded-lg border-2 border-[#D0D0D0] bg-white" type="email" name="email" id="" placeholder="Your email" {...register("email", { required: true })} defaultValue={user?.email} />
+                <input className="w-full mt-2 h-[3.5rem] text-gray-700 placeholder:text-[#A1A1A1] text-lg outline-none pl-[1.81rem] rounded-lg border-2 border-[#D0D0D0] bg-white" type="email" name="email" id="" placeholder="Your email" {...register("email", { required: true })} defaultValue={user?.email} readOnly/>
 
                 {/* price input  */}
                 <p className="text-[#444] mt-5 text-xl font-semibold">Price</p>
