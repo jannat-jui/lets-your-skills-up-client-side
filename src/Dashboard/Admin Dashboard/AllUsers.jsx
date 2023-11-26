@@ -47,9 +47,10 @@ const AllUsers = () => {
                             <thead className="bg-gray-400 h-[4.5rem] rounded-tl-2xl rounded-tr-2xl">
                                 <tr>
                                     <th className="text-white font-semibold"></th>
-                                    <th className="text-white font-semibold">Image</th>
+                                    
                                     <th className="text-white font-semibold">Name</th>
                                     <th className="text-white font-semibold">Email</th>
+                                    <th className="text-white font-semibold">Image</th>
                                     <th className="text-white font-semibold">Role</th>
                                   
                                 </tr>
@@ -59,17 +60,18 @@ const AllUsers = () => {
                                 {
                                     users.map((user, index)=><tr key={user._id}>
                                         <th>{index+1}</th>
-                                        <th><img src={user?.photo} alt="" /></th>
+                                        
                                         <td>{user.name}</td>
                                         <td>{user.email}</td>
-                                       
+                                        <th><img src={user?.photo} alt="" /></th>
                                        
                                         <td className="">
                                            {
-                                            user.role==='admin' ? 'Admin' :  <button onClick={()=>handleMakeAdmin(user)} className="btn  rounded-md  btn-neutral border-none btn-xs">Make Admin</button>
+                                            user.role==='admin' ? <button disabled className="btn  rounded-md  btn-neutral border-none btn-xs">Make Admin</button> :  <button onClick={()=>handleMakeAdmin(user)} className="btn  rounded-md  btn-neutral border-none btn-xs">Make Admin</button>
                                            }
                                         
                                         </td>
+                                        
                                        
                                         
                                     </tr>)

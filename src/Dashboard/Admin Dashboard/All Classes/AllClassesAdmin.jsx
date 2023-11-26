@@ -56,8 +56,8 @@ const AllClassesAdmin = () => {
                             <thead className="bg-gray-400 h-[4.5rem] rounded-tl-2xl rounded-tr-2xl">
                                 <tr>
                                     <th className="text-white font-semibold"></th>
-                                    <th className="text-white font-semibold">Image</th>
                                     <th className="text-white font-semibold">Title</th>
+                                    <th className="text-white font-semibold">Image</th>
                                     <th className="text-white font-semibold">Email</th>
                                     <th className="text-white font-semibold">Short Description</th>
                                     <th className="text-white font-semibold">Approve</th>
@@ -71,18 +71,18 @@ const AllClassesAdmin = () => {
                                 {
                                     classes.map((classs, index)=><tr key={classs._id}>
                                         <th>{index+1}</th>
-                                        <th><img src={classs?.image} alt="" /></th>
                                         <td>{classs.title}</td>
+                                        <th><img src={classs?.image} alt="" /></th>
                                         <td>{classs.email}</td>
                                         <td>{classs.description}</td>
                                         <td>{
-                                            classs.status==='approved' ? 'approved' :  <button onClick={()=>handleMakeApprove(classs)} className="btn  rounded-md  btn-neutral border-none btn-xs">Approve</button>
+                                            classs.status==='approved' ? <button disabled className="btn  rounded-md  btn-neutral border-none btn-xs">Approve</button> :  <button onClick={()=>handleMakeApprove(classs)} className="btn  rounded-md  btn-neutral border-none btn-xs">Approve</button>
                                            }</td>
                                         
                                         <td>{
-                                            classs.status==='rejected' ? 'rejected' :  <button onClick={()=>handleReject(classs)} className="btn  rounded-md  btn-error border-none btn-xs">Rejected</button>
+                                            classs.status==='rejected' ? <button disabled className="btn  rounded-md  btn-error border-none btn-xs">Rejected</button> :  <button onClick={()=>handleReject(classs)} className="btn  rounded-md  btn-error border-none btn-xs">Rejected</button>
                                            }</td>
-                                        <td>{classs.status==='approved' ? <button className="btn">progress</button> : <button disabled className="btn">progress</button>}
+                                        <td>{classs.status==='approved' ? <button className="btn">See Prograss</button> : <button disabled className="btn">See Progress</button>}
                                             </td>
                                        
                                     </tr>)

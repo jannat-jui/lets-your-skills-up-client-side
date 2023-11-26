@@ -18,9 +18,9 @@ const Dashboard = () => {
             <ul className="menu w-full px-0 mt-16">
                 {
                      isAdmin ? <>
-                     <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base" to="/dashboard/adminhome">Admin Home</NavLink></li>
-                     <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base" to="/dashboard/teacher-request">Teacher Requests</NavLink></li>
-                     <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base" to="/dashboard/users">All Users</NavLink></li>
+                     
+                     <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base" to="/dashboard/teacher-request">Teacher Request</NavLink></li>
+                     <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base" to="/dashboard/users">Users</NavLink></li>
                      <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base" to="/dashboard/classes">All Classes</NavLink></li>
                      <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base" to="/dashboard/profile">Profile</NavLink></li>
                  

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import teacherbg from "../../../assets/images/teacherbg.png"
 
 const JoinAsATeacher = () => {
+    
     return (
         <div className="flex justify-around items-center px-[8%] mt-32">
             <div style={{ border: "5px solid rgba(255, 146, 47, 0.50)" }} className="w-[31rem] h-[31rem] rounded-[50%] flex justify-center items-center overflow-hidden">

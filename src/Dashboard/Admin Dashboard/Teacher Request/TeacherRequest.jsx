@@ -18,17 +18,48 @@ const TeacherRequest = () => {
     })
     console.log(teachers)
 
-    const handleApprove = (teacher) => {
-        axiosSecure.patch(`/teacherrequest/teacher/${teacher._id}`)
+    // const handleApprove = (teacher) => {
+    //     axiosSecure.patch(`/teacherrequest/teacher/${teacher._id}`)
+    //         .then(res => {
+    //             console.log(res.data)
+    //             if (res.data.modifiedCount > 0) {
+    //                 refetch()
+    //                 alert('he is teacher now')
+
+    //             }
+    //         })
+    // }
+
+    const handleApprove = teacher => {
+        const updateRole = {
+            role: 'teacher'
+        }
+        axiosSecure.put(`/teacherrequest/teacher/${teacher._id}`, updateRole)
             .then(res => {
                 console.log(res.data)
                 if (res.data.modifiedCount > 0) {
                     refetch()
-                    alert('he is teacher now')
+                    alert('role is teacher')
 
                 }
             })
     }
+
+    const handleReject = teacher => {
+        const updateRole = {
+            role: 'rejected'
+        }
+        axiosSecure.put(`/teacherrequest/teacher/${teacher._id}`, updateRole)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.modifiedCount > 0) {
+                    refetch()
+                    alert('role is rejected')
+
+                }
+            })
+    }
+
     return (
 
         <div>
@@ -54,17 +85,23 @@ const TeacherRequest = () => {
                         {
                             teachers.map((teacher, index) => <tr key={teacher._id}>
                                 <th>{index + 1}</th>
-                                <th>jannat jui</th>
+                                <th>{teacher?.name}</th>
                                 <td></td>
                                 <td>experce</td>
                                 <td>title</td>
-                                <td>category</td>
-                                <td>status</td>
+                                <td>{teacher.status}</td>
+                                <td>{teacher.role==='teacher' ? 'accepted' : teacher.role==='rejected'? 'rejected': 'pending'}</td>
                                 <td>{
-                                    teacher.role === 'teacher' ? 'Teacher' : <button onClick={() => handleApprove(teacher)} className="mt-4 btn btn-success text-white text-lg flex-1">Approve</button>
+                                    teacher.role === 'teacher' || teacher.role==='rejected' ? <button disabled className="mt-4 btn btn-success text-white text-lg flex-1">Approve</button> : 
+                                    
+                                    <button onClick={() => handleApprove(teacher)} className="mt-4 btn btn-success text-white text-lg flex-1">Approve</button>
+                                    
                                 }</td>
 
-                                <td><button className="mt-4 btn btn-error text-white text-lg flex-1">Reject</button></td>
+                                <td>{
+                                    teacher.role === 'rejected' || teacher.role==='teacher' ? <button disabled className="mt-4 btn btn-success text-white text-lg flex-1">Reject</button> : <button onClick={() => handleReject(teacher)} className="mt-4 btn btn-secondary text-white text-lg flex-1">Reject</button>
+                                }</td>
+
 
 
                             </tr>)

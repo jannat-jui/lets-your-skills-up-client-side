@@ -2,9 +2,10 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form"
 import { AuthContext } from "../../Provider/AuthProvider";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 const TechTOLetsSkillUp = () => {
     const { user } = useContext(AuthContext);
     console.log(user)
@@ -46,6 +47,16 @@ const TechTOLetsSkillUp = () => {
           })
          
     }
+
+    const axiosPublic = useAxiosPublic()
+    const { data: teachers = [], refetch } = useQuery({
+        queryKey: ['teachers'],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/teacherrequest`)
+            return res.data;
+        }
+    })
+    console.log('---------->',teachers)
 
     return (
         <div className="w-[90vw] mx-auto mt-20">
