@@ -3,6 +3,8 @@ import rocket from "../../assets/images/rocket.png"
 import award from "../../assets/images/awart.png"
 import { TypeAnimation } from 'react-type-animation';
 import { Link } from "react-router-dom";
+import { MdPlayLesson } from "react-icons/md";
+
 const Banner = () => {
     return (
         <div className="flex flex-col-reverse lg:flex-row justify-between items-center lg:px-[8%] mt-20 pt-20">
@@ -33,7 +35,7 @@ const Banner = () => {
                 <div>
                     <Link to='/all-classes'>
                     
-                    <button className="btn mt-6 btn-success w-[18rem] h-[3.8rem] bg-[#058E6E] text-white text-base font-semibold">Try Free Lessons</button>
+                    <button className="btn mt-6 btn-success w-[18rem] h-[3.8rem] bg-[#058E6E] text-white text-base font-semibold"><MdPlayLesson/> Try Free Lessons</button>
                     </Link>
                 </div>
             </div>

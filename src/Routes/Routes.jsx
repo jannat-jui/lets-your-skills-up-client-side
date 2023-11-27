@@ -18,6 +18,8 @@ import UpdateClass from "../Dashboard/Teacher Dashboard/My Class/Update Class/Up
 import ClassDetailsTeacher from "../Dashboard/Teacher Dashboard/Class Details/ClassDetailsTeacher";
 import Payment from "../Dashboard/StudentDashboard/Payment/Payment";
 import EnrollClassDetails from "../Dashboard/StudentDashboard/EnrollClass Details/EnrollClassDetails";
+import PrivateRoutes from "./PrivateRoutes";
+import StudentProfile from "../Dashboard/StudentDashboard/Student Profile/StudentProfile";
 
 const router = createBrowserRouter([
     {
@@ -34,7 +36,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/all-classes/:id',
-                element: <ClassDetails/>,
+                element: <PrivateRoutes><ClassDetails/></PrivateRoutes>,
                 loader: ({params}) => fetch(`http://localhost:5000/addclasses/adminroute/approved/${params.id}` , {credentials: 'include'} )
             },
             {
@@ -44,7 +46,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/techto-letsskillup',
-                element: <TechTOLetsSkillUp/>
+                element: <PrivateRoutes><TechTOLetsSkillUp/></PrivateRoutes>
             }
             
         ]
@@ -59,7 +61,7 @@ const router = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element: <Dashboard/>,
+        element: <PrivateRoutes><Dashboard/></PrivateRoutes>,
         children: [
             // student dashbaord
             {
@@ -75,6 +77,10 @@ const router = createBrowserRouter([
                 path: 'enroll-classes/:id',
                 element: <EnrollClassDetails/>,
                 loader: ({params})=> fetch(`http://localhost:5000/addclasses/adminroute/approved/${params.id}`)
+            },
+            {
+                path: 'student-profile',
+                element: <StudentProfile/>
             },
 
             //admin dashbaord

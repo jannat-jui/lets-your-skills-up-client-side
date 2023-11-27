@@ -20,6 +20,7 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 const EnrollClassDetails = () => {
     const { id } = useParams()
     const classData = useLoaderData();
+    const [submitAssignment, setSubmitAssignment] = useState(false)
     console.log(classData)
     const [open, setOpen] = useState(false);
     const [rating, setRating] = useState(0)
@@ -61,7 +62,7 @@ const EnrollClassDetails = () => {
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: "Assignment Added",
+                title: "Thank You For You Feedback",
                 showConfirmButton: false,
                 timer: 1500
             });
@@ -93,7 +94,7 @@ const EnrollClassDetails = () => {
         <div>
 
             <div>
-                <Button onClick={handleOpen} variant="gradient">
+                <Button className="ml-[5%] mt-20 h-[4rem] text-xl" onClick={handleOpen} variant="gradient">
                     Teaching Evaluation Report
                 </Button>
                 <Dialog
@@ -137,17 +138,17 @@ const EnrollClassDetails = () => {
                 </Dialog>
             </div>
 
-            <div className="overflow-x-auto rounded-tl-2xl rounded-tr-2xl mt-8">
+            <div className="overflow-x-auto rounded-tl-2xl rounded-tr-2xl mt-8 mx-[5%]">
                 <table className="table  rounded-tl-2xl rounded-tr-2xl">
                     {/* head */}
-                    <thead className="bg-gray-400 h-[4.5rem] rounded-tl-2xl rounded-tr-2xl">
+                    <thead className=" h-[4.5rem] rounded-tl-2xl rounded-tr-2xl bg-[#F0D9CA]">
                         <tr>
                             <th className="text-white font-semibold"></th>
 
-                            <th className="text-white font-semibold">Title</th>
-                            <th className="text-white font-semibold">Description</th>
-                            <th className="text-white font-semibold">Deadline</th>
-                            <th className="text-white font-semibold">Submit</th>
+                            <th className="text-black text-xl  font-bold">Title</th>
+                            <th className="text-black text-xl  font-bold">Description</th>
+                            <th className="text-black text-xl  font-bold">Deadline</th>
+                            <th className="text-black text-xl  font-bold">Submit</th>
 
                         </tr>
                     </thead>
@@ -155,18 +156,17 @@ const EnrollClassDetails = () => {
                         {/* row 1 */}
                         {
                             filterAssignment.map((assignment, index) => <tr key={assignment._id}>
-                                <th>{index + 1}</th>
+                                <th className="text-lg">{index + 1}</th>
+                                <td className="text-lg">{assignment?.title}</td>
+                                <td className="text-lg">{assignment?.description}</td>
+                                <td className="text-lg">{assignment?.deadline}</td>
 
-                                <td>{assignment?.title}</td>
-                                <td>{assignment?.description}</td>
-                                <td>{assignment?.deadline}</td>
-
-                                {/* <td className="">
+                                <td className="">
                                     {
-                                        assignment.role === 'admin' ? <button disabled className="btn  rounded-md  btn-neutral border-none btn-xs">Make Admin</button> : <button  className="btn  rounded-md  btn-neutral border-none btn-xs">Make Admin</button>
+                                        submitAssignment ? <button disabled className="btn  rounded-md w-[8rem] h-[3rem] text-xl  btn-neutral border-none btn-xs">Submitted</button> : <button onClick={()=>setSubmitAssignment(!submitAssignment)} className="btn w-[8rem] h-[3rem] text-xl  rounded-md  btn-neutral border-none ">Submit</button>
                                     }
 
-                                </td> */}
+                                </td>
 
 
 

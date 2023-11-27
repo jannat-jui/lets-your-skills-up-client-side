@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/logo.svg"
 import { AuthContext } from "../../../Provider/AuthProvider";
+import { FaSignInAlt } from "react-icons/fa";
+
 
 import {
   Typography,
@@ -15,9 +17,13 @@ import {
 import {
   ChevronDownIcon,
 } from "@heroicons/react/24/solid";
+import useAdmin from "../../../Hooks/useAdmin";
+import useTeacher from "../../../Hooks/useTeacher";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAdmin] = useAdmin();
+    const [isTeacher] = useTeacher();
 
   const closeMenu = () => setIsMenuOpen(false);
   const { user, logOut } = useContext(AuthContext)
@@ -101,15 +107,39 @@ const Navbar = () => {
                     {user?.displayName}
                   </Typography>
 
-                  <Link to='/dashboard'>
-                  <Typography
-                    as="span"
-                    variant="small"
-                  className="text-black btn btn-ghost pt-2 text-lg mt-3 hover:text-red-800  "
-                  >
-                    DashBoard
-                  </Typography>
-                  </Link>
+                  {
+                    user && isAdmin && <Link to='/dashboard/teacher-request'>
+                    <Typography
+                      as="span"
+                      variant="small"
+                    className="text-black btn btn-ghost pt-2 text-lg mt-3 hover:text-red-800  "
+                    >
+                      DashBoard
+                    </Typography>
+                    </Link>
+                  }
+                  {
+                    user && isTeacher && <Link to='/dashboard/addclass'>
+                    <Typography
+                      as="span"
+                      variant="small"
+                    className="text-black btn btn-ghost pt-2 text-lg mt-3 hover:text-red-800  "
+                    >
+                      DashBoard
+                    </Typography>
+                    </Link>
+                  }
+                  {
+                    user && !isTeacher && !isAdmin && <Link to='/dashboard/enroll-classes'>
+                    <Typography
+                      as="span"
+                      variant="small"
+                    className="text-black btn btn-ghost pt-2 text-lg mt-3 hover:text-red-800  "
+                    >
+                      DashBoard
+                    </Typography>
+                    </Link>
+                  }
 
 
                   <Link to='/login'>
@@ -130,7 +160,7 @@ const Navbar = () => {
 
               :
 
-              <NavLink className="text-black text-lg font-semibold" to="/login">Sign In</NavLink>
+              <NavLink className="text-black text-lg font-semibold flex items-center gap-2" to="/login"><FaSignInAlt/> Sign In</NavLink>
           }
 
         </div>

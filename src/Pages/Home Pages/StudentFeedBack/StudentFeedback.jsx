@@ -24,6 +24,8 @@ const StudentFeedback = () => {
 
     return (
         <div className='mt-32 px-[8%]'>
+             <h1 className='text-center text-3xl font-bold border-l-4 border-r-4 border-orange-500 w-fit mx-auto px-4'>Insights from Students</h1>
+
             <Swiper
         cssMode={true}
         navigation={true}
@@ -31,7 +33,7 @@ const StudentFeedback = () => {
         mousewheel={true}
         keyboard={true}
         modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-        className="mySwiper"
+        className="mySwiper mt-8"
       >
         {
             feedback?.map(item=><SwiperSlide key={item.id}>

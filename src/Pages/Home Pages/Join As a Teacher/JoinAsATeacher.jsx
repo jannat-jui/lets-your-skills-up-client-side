@@ -1,6 +1,8 @@
 
 import { Link } from "react-router-dom";
 import teacherbg from "../../../assets/images/teacherbg.png"
+import { GiTeacher } from "react-icons/gi";
+
 
 const JoinAsATeacher = () => {
     
@@ -19,7 +21,7 @@ const JoinAsATeacher = () => {
                 <p className="text-[#6C6C6C] text-lg w-[40rem]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem habitant a tincidunt cras accumsan integer suscipit. Libero accumsan eget aliquet.</p>
 
                 <div>
-                    <Link to='/techto-letsskillup'><button className="btn btn-secondary bg-[#FB9C46] rounded-2xl border-none text-white font-semibold mt-8">Start Teaching Today</button></Link>
+                    <Link to='/techto-letsskillup'><button className="btn btn-secondary bg-[#FB9C46] rounded-2xl border-none text-white font-semibold mt-8"><GiTeacher/> Start Teaching Today</button></Link>
                 </div>
             </div>
 

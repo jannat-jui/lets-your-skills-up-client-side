@@ -42,12 +42,12 @@ console.log(classData)
     return (
         <div>
 
-            <div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 mt-20 gap-10 mx-[5%] xl:grid-cols-3">
                 {
                     filteredData?.map(item=><Card  key={item._id} className="mt-6 w-96 relative">
                     <CardHeader color="blue-gray" className="relative h-56">
                         <img
-                            src="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
+                            src={item?.image}
                             alt="card-image"
                         />
     
@@ -58,7 +58,7 @@ console.log(classData)
                             {item?.title}
                         </Typography>
                         <Typography>
-                            Instructor: Nahid Alam {item._id}
+                            Instructor: {item?.name}
                         </Typography>
     
     
@@ -67,7 +67,7 @@ console.log(classData)
                     <div className='flex justify-between items-center'>
     
                         <CardFooter className="pt-0">
-                           <Link to={`/dashboard/enroll-classes/${item._id}`}> <Button>Continue</Button></Link>
+                           <Link to={`/dashboard/enroll-classes/${item._id}`}> <Button className="bg-[#FB9C46] text-white font-semibold ">Continue</Button></Link>
                         </CardFooter>
                     </div>
                 </Card>)
