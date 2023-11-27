@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useClass from "../../../../Hooks/useClass";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
@@ -14,6 +14,7 @@ const UpdateClass = () => {
     console.log(classData)
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
+    const navigate = useNavigate()
 
     const {
         register,
@@ -44,6 +45,7 @@ const UpdateClass = () => {
                 showConfirmButton: false,
                 timer: 1500
               });
+              navigate('/dashboard/myclass')
         }
         
          

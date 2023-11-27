@@ -20,6 +20,7 @@ import Payment from "../Dashboard/StudentDashboard/Payment/Payment";
 import EnrollClassDetails from "../Dashboard/StudentDashboard/EnrollClass Details/EnrollClassDetails";
 import PrivateRoutes from "./PrivateRoutes";
 import StudentProfile from "../Dashboard/StudentDashboard/Student Profile/StudentProfile";
+import TeacherProfile from "../Dashboard/Teacher Dashboard/TeacherProfile/TeacherProfile";
 
 const router = createBrowserRouter([
     {
@@ -113,8 +114,13 @@ const router = createBrowserRouter([
             },
             {
                 path: 'myclass/:id',
-                element: <ClassDetailsTeacher/>
-            }
+                element: <ClassDetailsTeacher/>,
+                loader: ({params})=> fetch(`http://localhost:5000/addclasses/adminroute/approved/${params.id}`)
+            },
+            {
+                path: 'teacher-profile',
+                element: <TeacherProfile/>
+            },
 
         ]
     }

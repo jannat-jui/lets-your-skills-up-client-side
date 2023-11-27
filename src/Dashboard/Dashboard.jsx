@@ -37,10 +37,18 @@ const Dashboard = () => {
                     {
                         isAdmin ? <>
 
-                            <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base" to="/dashboard/teacher-request">Teacher Request</NavLink></li>
-                            <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base" to="/dashboard/users">Users</NavLink></li>
-                            <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base" to="/dashboard/classes">All Classes</NavLink></li>
-                            <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base" to="/dashboard/profile">Profile</NavLink></li>
+                            <li><NavLink className={({ isActive }) =>
+                                        isActive ? 'font-bold btn w-full text-white text-lg bg-[#FB9C46] hover:text-black hover:bg-white mt-8' : 'font-semibold text-xl btn btn-outline border-[#FB9C46] hover:text-black w-full mt-8 border-2 hover:bg-white hover:rounded-tr-3xl'
+                                    } to="/dashboard/teacher-request">Teacher Request</NavLink></li>
+                            <li><NavLink className={({ isActive }) =>
+                                        isActive ? 'font-bold btn w-full text-white text-lg bg-[#FB9C46] hover:text-black hover:bg-white mt-8' : 'font-semibold text-xl btn btn-outline border-[#FB9C46] hover:text-black w-full mt-8 border-2 hover:bg-white hover:rounded-tr-3xl'
+                                    } to="/dashboard/users">Users</NavLink></li>
+                            <li><NavLink className={({ isActive }) =>
+                                        isActive ? 'font-bold btn w-full text-white text-lg bg-[#FB9C46] hover:text-black hover:bg-white mt-8' : 'font-semibold text-xl btn btn-outline border-[#FB9C46] hover:text-black w-full mt-8 border-2 hover:bg-white hover:rounded-tr-3xl'
+                                    } to="/dashboard/classes">All Classes</NavLink></li>
+                            <li><NavLink className={({ isActive }) =>
+                                        isActive ? 'font-bold btn w-full text-white text-lg bg-[#FB9C46] hover:text-black hover:bg-white mt-8' : 'font-semibold text-xl btn btn-outline border-[#FB9C46] hover:text-black w-full mt-8 border-2 hover:bg-white hover:rounded-tr-3xl'
+                                    } to="/dashboard/profile">Profile</NavLink></li>
 
                         </>
 
@@ -49,9 +57,15 @@ const Dashboard = () => {
                             :
 
                             isTeacher ? <>
-                                <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base hover:bg-white " to="/dashboard/addclass">Add Class</NavLink></li>
-                                <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base hover:bg-white " to="/dashboard/myclass">My Class</NavLink></li>
-                                <li><NavLink className="uppercase font-bold cin flex justify-start items-center text-base hover:bg-white " to="/dashboard/userhome">Profile</NavLink></li>
+                                <li><NavLink className={({ isActive }) =>
+                                        isActive ? 'font-bold btn w-full text-white text-lg bg-[#FB9C46] hover:text-black hover:bg-white mt-8' : 'font-semibold text-xl btn btn-outline border-[#FB9C46] hover:text-black w-full mt-8 border-2 hover:bg-white hover:rounded-tr-3xl'
+                                    } to="/dashboard/addclass">Add Class</NavLink></li>
+                                <li><NavLink className={({ isActive }) =>
+                                        isActive ? 'font-bold btn w-full text-white text-lg bg-[#FB9C46] hover:text-black hover:bg-white mt-8' : 'font-semibold text-xl btn btn-outline border-[#FB9C46] hover:text-black w-full mt-8 border-2 hover:bg-white hover:rounded-tr-3xl'
+                                    } to="/dashboard/myclass">My Class</NavLink></li>
+                                <li><NavLink className={({ isActive }) =>
+                                        isActive ? 'font-bold btn w-full text-white text-lg bg-[#FB9C46] hover:text-black hover:bg-white mt-8' : 'font-semibold text-xl btn btn-outline border-[#FB9C46] hover:text-black w-full mt-8 border-2 hover:bg-white hover:rounded-tr-3xl'
+                                    } to="/dashboard/teacher-profile">Profile</NavLink></li>
 
                             </>
 

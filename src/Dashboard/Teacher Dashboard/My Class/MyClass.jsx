@@ -49,34 +49,34 @@ const MyClass = () => {
                         <Typography variant="h4" color="blue-gray" className="mb-2">
                            Title: {classss?.title}
                         </Typography>
-                        <Typography color="blue-gray" className="font-medium" textGradient>
-                            Name
+                        <Typography className="font-medium text-black mt-3" textGradient>
+                            Name: {classss?.name}
                         </Typography>
-                        <Typography color="blue-gray" className="font-medium" textGradient>
-                            Email
-                        </Typography>
-
-                        <Typography color="blue-gray" className="font-medium" textGradient>
-                            Price
+                        <Typography color="blue-gray" className="font-medium text-black mt-2" textGradient>
+                            Email: {classss?.email}
                         </Typography>
 
-                        <Typography color="blue-gray" className="font-medium" textGradient>
-                            Description
+                        <Typography color="blue-gray" className="font-medium text-black mt-2" textGradient>
+                            Price: ${classss?.price}
+                        </Typography>
+
+                        <Typography color="blue-gray" className="font-medium h-[3rem] mt-2 overflow-hidden" textGradient>
+                            Description: {classss?.description}
                         </Typography>
 
                         
                         <Typography className="flex gap-5">
                             
                         {
-                            classss.status==='approved' && <button className="mt-4 btn btn-error text-white text-lg flex-1">Accepted</button> 
+                            classss.status==='approved' && <button className="mt-4 btn btn-neutral bg-green-500 border-none text-white text-lg flex-1">Accepted</button> 
                         
                         }
                         {
-                            classss.status==='rejected' && <button className="mt-4 btn btn-error text-white text-lg flex-1">Rejected</button> 
+                            classss.status==='rejected' && <button className="mt-4 btn btn-error bg-red-500 text-white text-lg flex-1">Rejected</button> 
                         
                         }
                         {
-                            classss.status==='pending' && <button className="mt-4 btn btn-error text-white text-lg flex-1">Pending</button> 
+                            classss.status==='pending' && <button className="mt-4 btn btn-error bg-orange-800 text-white text-lg flex-1">Pending</button> 
                         
                         }
                         <Link to={`/dashboard/update-class/${classss._id}`}><button className="mt-4 btn btn-error text-white text-lg flex-1">Update</button></Link>

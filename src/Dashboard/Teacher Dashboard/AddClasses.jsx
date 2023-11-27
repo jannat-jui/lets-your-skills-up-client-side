@@ -71,7 +71,7 @@ const AddClasses = () => {
          
     }
     return (
-        <div className="w-[90vw] mx-auto mt-20">
+        <div className=" mt-20">
         <div className="w-[70vw] mx-auto">
             <h1 className="text-black text-center text-[2.5rem] font-semibold">Add Classes</h1>
 
@@ -113,7 +113,7 @@ const AddClasses = () => {
                 <input type="file" {...register("image", {required: true})} className="file-input file-input-bordered file-input-warning w-full max-w-xs mt-5" />
                 {errors.image && <span>This field is required</span>}
 
-                <input className="w-full mt-5 h-[3.5rem] btn btn-neutral border-none bg-[#D1A054B3] text-white text-xl font-bold" type="submit" id="" value="Add Class" />
+                <input className="w-full mt-5 h-[3.5rem] btn btn-neutral border-none bg-[#FB9C46] text-white text-xl font-bold" type="submit" id="" value="Add Class" />
 
 
 
