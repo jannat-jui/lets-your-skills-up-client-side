@@ -1,33 +1,52 @@
 import bannerimage from "../../assets/images/banner-image.png"
 import rocket from "../../assets/images/rocket.png"
 import award from "../../assets/images/awart.png"
-
+import { TypeAnimation } from 'react-type-animation';
+import { Link } from "react-router-dom";
 const Banner = () => {
     return (
-        <div className="flex justify-between items-center px-[8%] mt-20">
+        <div className="flex flex-col-reverse lg:flex-row justify-between items-center lg:px-[8%] mt-20 pt-20">
 
-            <div>
-                <h1 className="w-[40rem] text-black text-[3rem] font-bold leading-[4.8rem]">Learn Frome Home
-                    With <span className="text-[#FB9C46] mr-4"> The Best</span>
-                    Online Languange Tutors</h1>
+            <div className="px-2 lg:px-0 mt-6 lg:mt-0">
+            
+                <h1 className="lg:w-[40rem] text-black text-xl md:text-2xl lg:text-[3rem] font-bold md:leading-[4.8rem]">Learn Frome Home
+                    With </h1>
 
-                <p className="w-[47rem] text-[#6C6C6C] text-lg mt-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Id interdum dui mollis . Suspendisse nulla</p>
+                    <TypeAnimation
+                    sequence={[
+                        ' The Best Online Tutors',
+                        1000,
+                        'Learn Skills Online with Ease',
+                        1000,
+                        'The Best Online Tutors',
+                        1000,
+                        'Learn Skills Online with Ease',
+                        1000,
+                    ]}
+                    speed={50}
+                    className='text-2xl md:text-5xl font-bold md:leading-[4.5rem] lg:w-[40rem] text-[#FB9C46]'
+                    repeat={Infinity}
+                />
+
+                <p className="lg:w-[47rem] text-[#6C6C6C] text-base lg:text-lg mt-6">Embark on a journey of continuous learning! Explore a world of opportunities and enhance your skills with our diverse range of online courses. From technical expertise to creative pursuits, our platform offers a seamless learning experience tailored to your pace and preferences.</p>
 
                 <div>
+                    <Link to='/all-classes'>
+                    
                     <button className="btn mt-6 btn-success w-[18rem] h-[3.8rem] bg-[#058E6E] text-white text-base font-semibold">Try Free Lessons</button>
+                    </Link>
                 </div>
             </div>
 
 
             <div className="relative">
-                <div style={{background: "linear-gradient(139deg, #F1C365 7.67%, #F6AE54 40.13%, #FF922F 59.18%)"}} className="w-[28rem] h-[39rem] rounded-[12.75rem] flex justify-center items-center overflow-hidden">
-                    <img className="pt-5" src={bannerimage} alt="" />
+                <div style={{background: "linear-gradient(139deg, #F1C365 7.67%, #F6AE54 40.13%, #FF922F 59.18%)"}} className="lg:w-[28rem] lg:h-[39rem] rounded-[12.75rem] flex justify-center items-center overflow-hidden">
+                    <img className="pt-5 w-[50vw] md:w-[30vw] lg:w-auto" src={bannerimage} alt="" />
                 </div>
 
 
-                <img className="absolute -top-20 -left-52 " src={rocket} alt="" />
-                <img className="absolute -bottom-32 -right-32 " src={award} alt="" />
+                <img className="absolute -top-10 lg:-top-20 -left-32 lg:-left-52 " src={rocket} alt="" />
+                <img className="absolute -bottom-[2rem] lg:-bottom-32 -right-32 " src={award} alt="" />
             </div>
 
         </div>
