@@ -17,7 +17,7 @@ const AllClasses = () => {
     return (
         <div className="px-[8%]">
 
-            <div>
+            <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 mt-20 pt-20 justify-items-center items-center gap-8">
                 {
                     classes.map(classs=><DisplayAllClasses classs={classs} key={classs._id}/>)
                 }

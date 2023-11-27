@@ -61,7 +61,8 @@ const AddClasses = () => {
               price: data.price,
               description: data.description,
               image: res.data.data.display_url,
-              status: 'pending'
+              status: 'pending',
+              enrollCount: 0
   
   
             })
