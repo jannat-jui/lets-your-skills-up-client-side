@@ -8,7 +8,6 @@ import axios from "axios";
 
 const CheckOutForm = ({price, classData}) => {
     console.log(price)
-    console.log(classData._id)
   const [error, setError] = useState('');
   const [clientSecret, setClientSecret] = useState('')
   const [transactionId, setTransactionId] = useState('')
@@ -93,7 +92,7 @@ const CheckOutForm = ({price, classData}) => {
 
             }
            const res = await axiosSecure.post('/payments', payment)
-           const updateRes = await axios.patch(`http://localhost:5000/addclasses/adminroute/approved/${classData._id}`);
+           const updateRes = await axios.patch(`http://localhost:5000/addclasses/adminroute/approved/${classData?._id}`);
            console.log(updateRes.data)
            console.log(res.data)
            Swal.fire({

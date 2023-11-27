@@ -21,7 +21,7 @@ const Payment = () => {
     const price = parseFloat(classData?.price)
     // console.log(price)
     return (
-        <div>
+        <div className="">
             <h1>please payment</h1>
             
             <div>

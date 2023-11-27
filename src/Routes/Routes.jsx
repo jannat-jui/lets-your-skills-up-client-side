@@ -74,6 +74,7 @@ const router = createBrowserRouter([
             {
                 path: 'enroll-classes/:id',
                 element: <EnrollClassDetails/>,
+                loader: ({params})=> fetch(`http://localhost:5000/addclasses/adminroute/approved/${params.id}`)
             },
 
             //admin dashbaord

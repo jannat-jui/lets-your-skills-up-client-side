@@ -58,9 +58,24 @@ const TechTOLetsSkillUp = () => {
     })
     console.log('---------->',teachers)
 
+    const filterData = teachers?.filter(teacher=>teacher?.email===user?.email)
+    console.log(filterData)
+
+    const filterApproveData = filterData.find(item=>item?.role==='teacher');
+    console.log('-------role teacher------->', filterApproveData)
+    const filterrejectData = filterData.find(item=>item?.role==='rejected');
+    console.log('-------role reject------->', filterrejectData)
+
+
+
+
+
     return (
         <div className="w-[90vw] mx-auto mt-20">
-            <div className="w-[70vw] mx-auto">
+            {
+                filterApproveData ? 'You are Teacher now'
+                :
+                <div className="w-[70vw] mx-auto">
                 <h1 className="text-black text-center text-[2.5rem] font-semibold">Join as a teacher</h1>
 
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -112,7 +127,11 @@ const TechTOLetsSkillUp = () => {
 
                     {/* {errors.password?.type==='minLength' && <span>Password must be 6 character</span>} */}
 
-                    <input className="w-full mt-5 h-[3.5rem] btn btn-neutral border-none bg-[#D1A054B3] text-white text-xl font-bold" type="submit" id="" value="Submit For Review" />
+                    {
+                        filterrejectData ? <input className="w-full mt-5 h-[3.5rem] btn btn-neutral border-none bg-[#D1A054B3] text-white text-xl font-bold" type="submit" id="" value="Request To Another" />
+                        :
+                        <input className="w-full mt-5 h-[3.5rem] btn btn-neutral border-none bg-[#D1A054B3] text-white text-xl font-bold" type="submit" id="" value="Submit For Review" />
+                    }
 
 
 
@@ -123,6 +142,7 @@ const TechTOLetsSkillUp = () => {
 
 
             </div>
+            }
 
         </div>
     );
