@@ -16,8 +16,6 @@ import {
   ChevronDownIcon,
 } from "@heroicons/react/24/solid";
 
-
-
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -28,21 +26,27 @@ const Navbar = () => {
   }
   return (
     <div>
-      <div className="navbar bg-base-100 px-[7%] mt-4">
+      <div className="navbar bg-base-100 px-[7%] -mt-[5rem] fixed z-50 shadow-md">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
             </label>
             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-              <li><a>Item 1</a></li>
-
-              <li><a>Item 3</a></li>
+            <li><NavLink className={({ isActive }) =>
+              isActive ? 'font-medium text-[#FF922F]  border-b-2 text-lg' : 'font-medium text-gray-800 hover:text-gray-600   text-lg'
+            } to="/">Home</NavLink></li>
+            <li><NavLink className={({ isActive }) =>
+              isActive ? 'font-medium text-[#FF922F]  border-b-2 text-lg' : 'font-medium text-gray-800 hover:text-gray-600   text-lg'
+            } to="/all-classes">All Classes</NavLink></li>
+            <li><NavLink className={({ isActive }) =>
+              isActive ? 'font-medium text-[#FF922F]  border-b-2 text-lg' : 'font-medium text-gray-800 hover:text-gray-600  text-lg'
+            } to="/techto-letsskillup">Tech on LetsSkillUp</NavLink></li>
             </ul>
           </div>
           <div className="flex items-center">
             <img src={logo} alt="" />
-            <Link to='/' className="cursor-pointer text-[#313273] text-[2rem] font-medium">LetsSkillUp</Link>
+            <Link to='/' className="cursor-pointer text-[#313273] lg:text-[2rem] font-medium">LetsSkillUp</Link>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -83,7 +87,7 @@ const Navbar = () => {
                   />
                 </Button>
               </MenuHandler>
-              <MenuList className="p-1">
+              <MenuList className="p-1 bg-white hover:bg-white">
                 <MenuItem
                   onClick={closeMenu}
                   className="bg-white hover:bg-white"
@@ -92,7 +96,7 @@ const Navbar = () => {
                   <Typography
                     as="span"
                     variant="small"
-                  className="bg-none cursor-default text-black"
+                  className="bg-none cursor-default text-black text-center"
                   >
                     {user?.displayName}
                   </Typography>
@@ -101,7 +105,7 @@ const Navbar = () => {
                   <Typography
                     as="span"
                     variant="small"
-                  className="text-black  text-lg mt-3 hover:text-red-800  "
+                  className="text-black btn btn-ghost pt-2 text-lg mt-3 hover:text-red-800  "
                   >
                     DashBoard
                   </Typography>
@@ -112,7 +116,7 @@ const Navbar = () => {
                   <Typography
                     as="span"
                     variant="small"
-                  className="text-black  text-lg mt-3 hover:text-red-800  "
+                  className="text-black btn btn-ghost pt-2 text-lg mt-3 hover:text-red-800  "
                   onClick={handlelogOut}
                   >
                     Log Out

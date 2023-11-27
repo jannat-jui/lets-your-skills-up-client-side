@@ -17,6 +17,7 @@ import MyEnrollClasses from "../Dashboard/StudentDashboard/MyEnrollClasses/MyEnr
 import UpdateClass from "../Dashboard/Teacher Dashboard/My Class/Update Class/UpdateClass";
 import ClassDetailsTeacher from "../Dashboard/Teacher Dashboard/Class Details/ClassDetailsTeacher";
 import Payment from "../Dashboard/StudentDashboard/Payment/Payment";
+import EnrollClassDetails from "../Dashboard/StudentDashboard/EnrollClass Details/EnrollClassDetails";
 
 const router = createBrowserRouter([
     {
@@ -67,7 +68,12 @@ const router = createBrowserRouter([
             },
             {
                 path: 'enroll-classes',
-                element: <MyEnrollClasses/>
+                element: <MyEnrollClasses/>,
+                loader: ()=>fetch('http://localhost:5000/addclasses/adminroute/approved')
+            },
+            {
+                path: 'enroll-classes/:id',
+                element: <EnrollClassDetails/>,
             },
 
             //admin dashbaord
