@@ -6,8 +6,8 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import axios from "axios";
 
-const CheckOutForm = ({price, classData}) => {
-    console.log(price)
+const CheckOutForm = ({price, classData, refetch}) => {
+    // console.log(price)
   const [error, setError] = useState('');
   const [clientSecret, setClientSecret] = useState('')
   const [transactionId, setTransactionId] = useState('')
@@ -23,7 +23,7 @@ const CheckOutForm = ({price, classData}) => {
      if(price>0){
         axiosSecure.post('/create-payment-intent', {price: price})
         .then(res=>{
-          console.log(res.data.clientSecret)
+          // console.log(res.data.clientSecret)
           setClientSecret(res.data.clientSecret)
         })
      }
@@ -51,7 +51,7 @@ const CheckOutForm = ({price, classData}) => {
             setError(error.message)
         }
         else{
-            console.log('payment method', paymentMethod)
+            // console.log('payment method', paymentMethod)
             setError('')
         }
 
@@ -70,9 +70,9 @@ const CheckOutForm = ({price, classData}) => {
           console.log('confirm error')
         }
         else{
-          console.log('payment intent', paymentIntent)
+          // console.log('payment intent', paymentIntent)
           if(paymentIntent.status==='succeeded'){
-            console.log('transaction id', paymentIntent.id);
+            // console.log('transaction id', paymentIntent.id);
             setTransactionId(paymentIntent.id)
 
             // now save the payment in the database
@@ -93,8 +93,8 @@ const CheckOutForm = ({price, classData}) => {
             }
            const res = await axiosSecure.post('/payments', payment)
            const updateRes = await axios.patch(`http://localhost:5000/addclasses/adminroute/approved/${classData?._id}`);
-           console.log(updateRes.data)
-           console.log(res.data)
+          //  console.log(updateRes.data)
+          //  console.log(res.data)
            Swal.fire({
             position: "top-end",
             icon: "success",

@@ -9,7 +9,7 @@ import {
 import { Link, useLoaderData } from "react-router-dom";
 const ClassDetails = () => {
     const classs = useLoaderData();
-    console.log(classs)
+    // console.log(classs)
     return (
         <div className="">
             <Card className="w-full max-w-[80vw] mx-auto lg:pt-20  mt-[5rem] flex-col lg:flex-row gap-10">

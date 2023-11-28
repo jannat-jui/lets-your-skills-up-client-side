@@ -2,7 +2,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
-import { Link } from 'react-router-dom';
 import { FaDiscourse } from "react-icons/fa";
 import { PiStudentBold } from "react-icons/pi";
 
@@ -18,17 +17,21 @@ import {
 import { Tooltip } from 'react-tooltip';
 import useAxiosPublic from '../../../Hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
+import Loading from '../../../Components/Loading/Loading';
 
 const PopularCourses = () => {
     const axiosPublic = useAxiosPublic()
-    const { data: courses = [], refetch } = useQuery({
+    const { data: courses = [], isLoading } = useQuery({
         queryKey: ['courses'],
         queryFn: async () => {
             const res = await axiosPublic.get('/addclasses/adminroute/approved?sortField=enrollCount&sortOrder=desc')
             return res.data;
         }
     })
-    console.log(courses)
+    // console.log(courses)
+    if(isLoading){
+        return <Loading/>
+    }
     return (
         <div className='mt-20 px-[8%]'>
             <h1 className='text-center text-3xl font-bold border-l-4 border-r-4 border-orange-500 w-fit mx-auto px-4'>Popular Courses</h1>

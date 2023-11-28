@@ -10,7 +10,7 @@ const JoinAsATeacher = () => {
         <div className="flex flex-col lg:flex-row justify-around items-center px-[8%] mt-32">
             <div style={{ border: "5px solid rgba(255, 146, 47, 0.50)" }} className="lg:w-[31rem] lg:h-[31rem] rounded-[50%] flex justify-center items-center overflow-hidden">
                 <div className="w-[25rem] h-[25rem] rounded-[50%] bg-[#F0D9CA] relative">
-                    <img data-aos="fade-up" className="-top-8 absolute -left-10" src={teacherbg} alt="" />
+                    <img data-aos="flip-down" className="-top-8 absolute -left-10" src={teacherbg} alt="" />
                 </div>
             </div>
 

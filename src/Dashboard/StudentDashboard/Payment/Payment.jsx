@@ -17,7 +17,7 @@ const Payment = () => {
         }
     })
     const classData = classes.find(item=>item._id===id)
-    console.log(classData)
+    // console.log(classData)
     const price = parseFloat(classData?.price)
     // console.log(price)
     return (
@@ -28,7 +28,7 @@ const Payment = () => {
             
             <div>
             <Elements stripe={stripePromise}>
-                    <CheckOutForm classData={classData} price={price}/>
+                    <CheckOutForm classData={classData} refetch={refetch} price={price}/>
                 </Elements>
             </div>
         </div>

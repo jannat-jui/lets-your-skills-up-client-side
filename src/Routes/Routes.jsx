@@ -23,11 +23,13 @@ import StudentProfile from "../Dashboard/StudentDashboard/Student Profile/Studen
 import TeacherProfile from "../Dashboard/Teacher Dashboard/TeacherProfile/TeacherProfile";
 import AdminClassDetails from "../Dashboard/Admin Dashboard/All Classes/Class Details Adminn/AdminClassDetails";
 import AdminProfile from "../Dashboard/Admin Dashboard/Admin Profile/AdminProfile";
+import ErrorElement from "../Components/Error Page/ErrorElement";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Root/>,
+        errorElement: <ErrorElement/>,
         children: [
             {
                 path: '/',
@@ -44,7 +46,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/payment/:id',
-                element: <Payment/>,
+                element: <PrivateRoutes><Payment/></PrivateRoutes>,
                 loader: ({params}) => fetch(`http://localhost:5000/addclasses/adminroute/approved/${params.id}`, {credentials: 'include'} )
             },
             {
@@ -65,6 +67,7 @@ const router = createBrowserRouter([
     {
         path: 'dashboard',
         element: <PrivateRoutes><Dashboard/></PrivateRoutes>,
+        errorElement: <ErrorElement/>,
         children: [
             // student dashbaord
             {

@@ -3,6 +3,7 @@ import DisplayAllClasses from "./DisplayClasses/DisplayAllClasses";
 import axios from "axios";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useState } from "react";
+import Loading from "../../Components/Loading/Loading";
 
 
 const AllClasses = () => {
@@ -11,14 +12,14 @@ const AllClasses = () => {
     const [itemsPerPage, setItemsPerPage] = useState(10);
     
     const axiosPublic = useAxiosPublic()
-    const { data: classes = [], refetch: refetchclasses } = useQuery({
+    const { data: classes = [], refetch: refetchclasses, isLoading } = useQuery({
         queryKey: ['classes', currentPage, itemsPerPage],
         queryFn: async () => {
             const res = await axiosPublic.get(`/addclasses/adminroute/approved?page=${currentPage}&size=${itemsPerPage}`)
             return res.data;
         }
     })
-    console.log(classes)
+    // console.log(classes)
 
     const { data: classescount = [] } = useQuery({
         queryKey: ['classescount'],
@@ -56,6 +57,9 @@ const AllClasses = () => {
         }
         refetchclasses()
     }
+    if(isLoading){
+        return <Loading/>
+    }
     return (
         <div className="px-[8%] relative h-[90vh]">
 
@@ -65,7 +69,7 @@ const AllClasses = () => {
                 }
             </div>
 
-            <div className='text-center mb-10 space-x-6 absolute bottom-0 left-[40%]'>
+            <div className='text-center mb-10 space-x-6 absolute bottom-0  left-[40%]'>
               
                 <button className="btn  btn-outline border-orange-500 border-4 w-[7rem] text-lg" onClick={handlePrevPage}>Prev</button>
                 {
