@@ -39,11 +39,11 @@ const MyClass = () => {
         });
       }
     return (
-        <div className="grid grid-cols-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4">
             {
                 classs.map(classss => <Card key={classss._id} className="w-96">
                     <CardHeader floated={false} className="h-80">
-                        <img src={classss?.image} alt="profile-picture" />
+                        <img className="w-full" src={classss?.image} alt="profile-picture" />
                     </CardHeader>
                     <CardBody className="text-left">
                         <Typography variant="h4" color="blue-gray" className="mb-2">

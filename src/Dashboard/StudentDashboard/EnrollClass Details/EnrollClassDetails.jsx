@@ -15,12 +15,12 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import ReactStars from "react-rating-stars-component";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import moment from "moment/moment";
 
 
 const EnrollClassDetails = () => {
     const { id } = useParams()
     const classData = useLoaderData();
-    const [submitAssignment, setSubmitAssignment] = useState(false)
     console.log(classData)
     const [open, setOpen] = useState(false);
     const [rating, setRating] = useState(0)
@@ -53,8 +53,8 @@ const EnrollClassDetails = () => {
         formState: { errors },
     } = useForm();
 
-    const { mutate } = useMutation({
-        mutationKey: ['food'],
+    const { mutate: mutateFirst } = useMutation({
+        mutationKey: ['feedback'],
         mutationFn: (addingData) => {
               return axios.post('http://localhost:5000/feedbacks', addingData, { withCredentials: true, })
         },
@@ -67,12 +67,13 @@ const EnrollClassDetails = () => {
                 timer: 1500
             });
             handleOpen()
+            
         }
 
     })
     const onSubmit = async (data) => {
         console.log(data)
-        mutate({
+        mutateFirst({
             
             description: data.description,
             rating: rating,
@@ -86,6 +87,44 @@ const EnrollClassDetails = () => {
 
           })
           reset()
+
+
+    }
+   const today = moment().format('l');
+   
+   const { mutate: mutateSecond  } = useMutation({
+    mutationKey: ['assignment'],
+    mutationFn: (data) => {
+          return axios.post('http://localhost:5000/assignmentsubmission', data, { withCredentials: true, })
+    },
+    onSuccess: () => {
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your assignment is Submitted",
+            showConfirmButton: false,
+            timer: 1500
+        });
+        
+    }
+
+})
+
+
+    const handleSubmitAssignment = (assignmentid)=>{
+        console.log('click', assignmentid)
+        console.log(id)
+        console.log(today)
+        mutateSecond({
+            
+            assignmentid: assignmentid,
+            classId: id,
+            today: today,
+            userName: user?.displayName,
+            userEmail: user?.email,
+            userPhoto: user?.photoURL,
+            classTitle: classData?.title
+          })
 
 
     }
@@ -162,9 +201,7 @@ const EnrollClassDetails = () => {
                                 <td className="text-lg">{assignment?.deadline}</td>
 
                                 <td className="">
-                                    {
-                                        submitAssignment ? <button disabled className="btn  rounded-md w-[8rem] h-[3rem] text-xl  btn-neutral border-none btn-xs">Submitted</button> : <button onClick={()=>setSubmitAssignment(!submitAssignment)} className="btn w-[8rem] h-[3rem] text-xl  rounded-md  btn-neutral border-none ">Submit</button>
-                                    }
+                                <button onClick={()=>handleSubmitAssignment(assignment?._id)} className="btn w-[8rem] h-[3rem] text-xl  rounded-md  btn-neutral border-none ">Submit</button>
 
                                 </td>
 

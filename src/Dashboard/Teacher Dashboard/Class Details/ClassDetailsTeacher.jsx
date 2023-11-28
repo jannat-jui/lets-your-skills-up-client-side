@@ -15,6 +15,7 @@ import { PiStudentBold } from "react-icons/pi";
 import { MdAssignment } from "react-icons/md";
 
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import moment from "moment";
 
 
 const ClassDetailsTeacher = () => {
@@ -28,7 +29,7 @@ const ClassDetailsTeacher = () => {
     }, []);
 
     const axiosPublic = useAxiosPublic()
-    const { data: assignments = [], refetch } = useQuery({
+    const { data: assignments = [], refetch: refetchAssignment } = useQuery({
         queryKey: ['assignments'],
         queryFn: async () => {
             const res = await axiosPublic.get('/assignments')
@@ -36,6 +37,15 @@ const ClassDetailsTeacher = () => {
         }
     })
     console.log(assignments)
+
+    const { data: assignmentssubmission = [], refetch: refetchassignmentssubmission } = useQuery({
+        queryKey: ['assignmentssubmission'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/assignmentsubmission')
+            return res.data;
+        }
+    })
+    
 
     const filterAssignment = assignments.filter(item => item.classId === classData._id)
     console.log(filterAssignment)
@@ -61,6 +71,7 @@ const ClassDetailsTeacher = () => {
                 timer: 1500
             });
             handleOpen()
+            refetchAssignment();
         }
 
     })
@@ -79,6 +90,16 @@ const ClassDetailsTeacher = () => {
 
     }
 
+    console.log(id)
+    console.log(assignmentssubmission)
+    const todayDate = moment().format('l');
+    console.log(todayDate)
+    const filterAssignmentsubmissionthiscourse = assignmentssubmission.filter(item=>item?.classId===id)
+    console.log('assignment for this course-------> ', filterAssignmentsubmissionthiscourse)
+
+    // filter with current date 
+    const filterforperday = filterAssignmentsubmissionthiscourse.filter(item=>item?.today===todayDate)
+    console.log('per day -------------> ', filterforperday)
 
     return (
         <div>
@@ -105,7 +126,7 @@ const ClassDetailsTeacher = () => {
                     <div className="w-[17rem] h-[15rem]  bg-gradient-to-r from-[#EFD8C9] to-[#efd8c971] border-b-8 border-b-[#55fb46] items-center flex flex-col justify-center text-center gap-5">
                         <MdAssignment className="text-[6rem] ml-0"/>
 
-                        <p className="text-3xl font-semibold">{filterAssignment?.length}</p>
+                        <p className="text-3xl font-semibold">{filterforperday?.length}</p>
                         <p className="text-2xl font-semibold">Per Day Submission</p>
 
                     </div>
