@@ -118,11 +118,11 @@ const router = createBrowserRouter([
 
             {
                 path: 'addclass',
-                element: <AddClasses/>
+                element: <PrivateRoutes><AddClasses/></PrivateRoutes>
             },
             {
                 path: 'myclass',
-                element: <MyClass/>
+                element: <PrivateRoutes><MyClass/></PrivateRoutes>
             },
             {
                 path: 'update-class/:id',
@@ -135,7 +135,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'teacher-profile',
-                element: <TeacherProfile/>
+                element: <PrivateRoutes><TeacherProfile/></PrivateRoutes>
             },
 
         ]

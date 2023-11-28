@@ -11,6 +11,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const MyClass = () => {
     useEffect(() => {
@@ -19,15 +20,54 @@ const MyClass = () => {
     // const [classs, refetch] = useClass();
 
     const axiosSecure = useAxiosSecure();
+    const axiosPublic = useAxiosPublic();
+
+    const [currentPage, setCurrentPage] = useState(0);
+    const [itemsPerPage, setItemsPerPage] = useState(10);
 
     const { user } = useContext(AuthContext);
     const { refetch, data: classs = [] } = useQuery({
-        queryKey: ['classs', user?.email],
+        queryKey: ['classs', user?.email, currentPage, itemsPerPage],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/addclasses?email=${user.email}`);
+            const res = await axiosSecure.get(`/addclasses?email=${user.email}&page=${currentPage}&size=${itemsPerPage}`);
             return res.data;
         }
     })
+    const { data: classescount = [] } = useQuery({
+        queryKey: ['classescount',user?.email],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/classescount/email?email=${user.email}`)
+            return res.data;
+        }
+    })
+
+    const [count, setCount] = useState(classescount?.totalCount)
+    const numberOfPages = Math.ceil(count / itemsPerPage);
+    const pages = []
+    for (let i = 0; i < numberOfPages; i++) {
+        pages.push(i)
+    }
+    const handleItemsPerPage = e => {
+        const val = parseInt(e.target.value);
+        console.log(val);
+        setItemsPerPage(val);
+        setCurrentPage(0);
+    }
+
+    const handlePrevPage = () => {
+        if (currentPage > 0) {
+            setCurrentPage(currentPage - 1);
+        }
+        refetch()
+    }
+
+    const handleNextPage = () => {
+        if (currentPage < pages.length - 1) {
+            setCurrentPage(currentPage + 1);
+        }
+        refetch()
+    }
+
 
     const handleDeleteItem = (item) => {
         Swal.fire({
@@ -54,14 +94,9 @@ const MyClass = () => {
         });
     }
 
-
-
-
-
-
     return (
-        <div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4">
+        <div className="pt-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 mx-[5%]">
                 {
                     classs.map(classss => <Card key={classss._id} className="w-96">
                         <CardHeader floated={false} className="h-80">
@@ -120,7 +155,25 @@ const MyClass = () => {
                 }
             </div>
             
-
+            <div className="mt-32">
+            <div className='text-center mb-10  space-x-6 absolute bottom-0  left-[45%]'>
+              
+              <button className="btn  btn-outline border-orange-500 border-4 w-[7rem] text-lg" onClick={handlePrevPage}>Prev</button>
+              {
+                  pages.map(page => <button
+                      className={currentPage === page ? 'btn bg-orange-500 text-xl font-bold text-black' : 'btn btn-outline border-orange-500 border-4 text-xl'}
+                      onClick={() => setCurrentPage(page)}
+                      key={page}
+                  >{page}</button>)
+              }
+              <button className="btn btn-outline border-orange-500 border-4 w-[7rem] text-lg" onClick={handleNextPage}>Next</button>
+              <select className="btn bg-orange-500 text-xl" value={itemsPerPage} onChange={handleItemsPerPage} name="" id="">
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                  <option value="50">50</option>
+              </select>
+          </div>
+            </div>
         </div>
     );
 };

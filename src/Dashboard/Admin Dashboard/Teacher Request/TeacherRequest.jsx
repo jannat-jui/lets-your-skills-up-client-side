@@ -53,7 +53,7 @@ const TeacherRequest = () => {
         }
         refetch()
     }
-    // console.log(teachers)
+    console.log(teachers)
 
     const handleApprove = teacher => {
         const updateRole = {
@@ -122,9 +122,9 @@ const TeacherRequest = () => {
                             teachers.map((teacher, index) => <tr key={teacher._id}>
                                 <th>{index + 1}</th>
                                 <th>{teacher?.name}</th>
-                                <td></td>
-                                <td>experce</td>
-                                <td>title</td>
+                                <td><img className="w-[4rem] h-[4rem] rounded-[4rem] border-2 border-black" src={teacher?.image} alt="" /></td>
+                                <td>{teacher?.experince}</td>
+                                <td>{teacher?.title}</td>
                                 <td>{teacher.status}</td>
                                 <td>{teacher.role==='teacher' ? 'accepted' : teacher.role==='rejected'? 'rejected': 'pending'}</td>
                                 <td>{
