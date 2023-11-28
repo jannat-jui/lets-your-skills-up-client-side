@@ -1,4 +1,3 @@
-import udemy from "../../assets/images/Udemy_logo.svg.png"
 import { Tooltip } from 'react-tooltip';
 import Marquee from "react-fast-marquee";
 import { useEffect, useState } from "react";
@@ -13,8 +12,8 @@ const Partners = () => {
             .then(data => setPartner(data))
     }, [])
     return (
-        <div className="px-[8%] mt-16 flex flex-col md:flex-row items-center gap-5 md:gap-12">
-            <p className="text-[#230F0F] lg:text-[1.75rem] font-semibold ">We partner with more than 10+ companies</p>
+        <div className="lg:px-[8%] mt-16 flex flex-col md:flex-row items-center gap-5 md:gap-12">
+            <p data-aos="fade-up" className="text-[#230F0F] lg:text-[1.75rem] font-semibold ">We partner with more than 10+ companies</p>
 
             <Marquee pauseOnHover className="md:h-[20rem]">
                 {
@@ -25,7 +24,7 @@ const Partners = () => {
                          <a id="my-anchor-element">{item?.description}</a>
                                 <Tooltip className=" text-white"
                                     anchorSelect="#my-anchor-element"
-                                    content={item?.description}
+                                    content={item?.name}
                                 />
                          </div>
                         

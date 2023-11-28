@@ -21,6 +21,8 @@ import EnrollClassDetails from "../Dashboard/StudentDashboard/EnrollClass Detail
 import PrivateRoutes from "./PrivateRoutes";
 import StudentProfile from "../Dashboard/StudentDashboard/Student Profile/StudentProfile";
 import TeacherProfile from "../Dashboard/Teacher Dashboard/TeacherProfile/TeacherProfile";
+import AdminClassDetails from "../Dashboard/Admin Dashboard/All Classes/Class Details Adminn/AdminClassDetails";
+import AdminProfile from "../Dashboard/Admin Dashboard/Admin Profile/AdminProfile";
 
 const router = createBrowserRouter([
     {
@@ -96,6 +98,16 @@ const router = createBrowserRouter([
             {
                 path: 'classes',
                 element: <AllClassesAdmin/>
+            },
+            {
+                path: 'classes/:id',
+                element: <AdminClassDetails/>,
+                loader: ({params})=> fetch(`http://localhost:5000/addclasses/adminroute/approved/${params.id}`)
+            },
+            {
+                path: 'admin-profile',
+                element: <AdminProfile/>
+
             },
 
             // teacher dashboard

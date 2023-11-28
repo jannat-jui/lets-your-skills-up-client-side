@@ -36,8 +36,8 @@ const StudentFeedback = () => {
         className="mySwiper mt-8"
       >
         {
-            feedback?.map(item=><SwiperSlide key={item.id}>
-                <div className='pb-20'>
+            feedback?.map(item=><SwiperSlide  key={item.id}>
+                <div data-aos="fade-up" className='lg:pb-20 '>
                 <img className='w-[5rem] mx-auto h-[5rem]  rounded-[50%]' src={item?.userPhoto} alt="" />
     
                     <h1 className='text-2xl mt-6 font-bold text-center'>{item?.classTitle}</h1>

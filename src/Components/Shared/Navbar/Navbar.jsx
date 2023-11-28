@@ -32,7 +32,7 @@ const Navbar = () => {
   }
   return (
     <div>
-      <div className="navbar bg-base-100 lg:px-[7%] -mt-[5rem] fixed z-50 shadow-md">
+      <div className="navbar bg-base-100 lg:px-[7%] lg:-mt-[5rem] lg:fixed lg:z-50 shadow-md">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -52,7 +52,7 @@ const Navbar = () => {
           </div>
           <div className="flex items-center">
             <img src={logo} alt="" />
-            <Link to='/' className="cursor-pointer text-[#313273] lg:text-[2rem] font-medium">LetsSkillUp</Link>
+            <Link to='/' className="cursor-pointer hidden md:block text-[#313273] lg:text-[2rem] font-medium">LetsSkillUp</Link>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">

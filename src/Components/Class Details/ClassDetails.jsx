@@ -11,17 +11,17 @@ const ClassDetails = () => {
     const classs = useLoaderData();
     console.log(classs)
     return (
-        <div>
-            <Card className="w-full max-w-[80vw] mx-auto pt-20 mt-[5rem] flex-col lg:flex-row">
+        <div className="">
+            <Card className="w-full max-w-[80vw] mx-auto lg:pt-20  mt-[5rem] flex-col lg:flex-row gap-10">
                 <CardHeader
                     shadow={false}
                     floated={false}
-                    className="m-0 w-2/5 shrink-0 rounded-r-none"
+                    className="m-0  shrink-0 rounded-r-none"
                 >
                     <img
                         src={classs?.image}
                         alt="card-image"
-                        className="h-full w-full object-cover"
+                        className="h-[30rem] w-full lg:w-[40rem] object-cover"
                     />
                 </CardHeader>
                 <CardBody>
@@ -40,7 +40,7 @@ const ClassDetails = () => {
                    
                     <Typography className="mb-8 font-normal flex items-center gap-3">
                         <img className="w-[4rem] h-[4rem] rounded-[50%]" src={play} alt="" />
-                        <h1 className="text-xl font-medium">Instructor: {classs?.name}</h1>
+                        <h1 className="md:text-xl font-medium">Instructor: {classs?.name}</h1>
                     </Typography>
 
                     <Typography className=" flex flex-col justify-start  gap-5">

@@ -42,6 +42,17 @@ const PopularCourses = () => {
                 modules={[Pagination]}
                 className="mySwiper mt-12"
                 autoplay
+                breakpoints={{
+                    320: {
+                      slidesPerView: 1, // 1 slide per view on small screens (mobile devices)
+                    },
+                    768: {
+                      slidesPerView: 1.5, // 2 slides per view on tablets
+                    },
+                    1024: {
+                      slidesPerView: 4, // 4 slides per view on desktop devices
+                    },
+                  }}
 
             >
                 {

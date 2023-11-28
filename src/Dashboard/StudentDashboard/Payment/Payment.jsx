@@ -21,8 +21,10 @@ const Payment = () => {
     const price = parseFloat(classData?.price)
     // console.log(price)
     return (
-        <div className="">
-            <h1>please payment</h1>
+       <div>
+         <div className="mx-[5%] md:mx-[10%] lg:mx-[20%] mt-20 pt-32">
+            
+            <h1 className="text-2xl font-semibold mb-4">Please Payment</h1>
             
             <div>
             <Elements stripe={stripePromise}>
@@ -30,6 +32,7 @@ const Payment = () => {
                 </Elements>
             </div>
         </div>
+       </div>
     );
 };
 

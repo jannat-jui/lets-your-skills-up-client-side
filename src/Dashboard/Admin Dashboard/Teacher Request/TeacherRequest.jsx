@@ -6,6 +6,7 @@ import {
     CardBody,
     Typography,
 } from "@material-tailwind/react";
+import Swal from "sweetalert2";
 
 const TeacherRequest = () => {
     const axiosSecure = useAxiosSecure()
@@ -39,7 +40,13 @@ const TeacherRequest = () => {
                 console.log(res.data)
                 if (res.data.modifiedCount > 0) {
                     refetch()
-                    alert('role is teacher')
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Teacher Request Approved",
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
 
                 }
             })
@@ -54,7 +61,13 @@ const TeacherRequest = () => {
                 console.log(res.data)
                 if (res.data.modifiedCount > 0) {
                     refetch()
-                    alert('role is rejected')
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Teacher Request Rejected",
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
 
                 }
             })
@@ -63,10 +76,9 @@ const TeacherRequest = () => {
     return (
 
         <div>
-            <div className="overflow-x-auto rounded-tl-2xl rounded-tr-2xl mt-8">
-                <table className="table  rounded-tl-2xl rounded-tr-2xl">
-                    {/* head */}
-                    <thead className="bg-gray-400 h-[4.5rem] rounded-tl-2xl rounded-tr-2xl">
+            <div className="overflow-x-auto rounded-tl-2xl rounded-tr-2xl mt-20 mx-[5%]">
+                <table className="table  rounded-tl-2xl rounded-tr-2xl ">
+                    <thead className="bg-orange-300 text-xl h-[4.5rem] rounded-tl-2xl rounded-tr-2xl">
                         <tr>
                             <th className="text-white font-semibold"></th>
                             <th className="text-white font-semibold">Name</th>
@@ -99,7 +111,7 @@ const TeacherRequest = () => {
                                 }</td>
 
                                 <td>{
-                                    teacher.role === 'rejected' || teacher.role==='teacher' ? <button disabled className="mt-4 btn btn-success text-white text-lg flex-1">Reject</button> : <button onClick={() => handleReject(teacher)} className="mt-4 btn btn-secondary text-white text-lg flex-1">Reject</button>
+                                    teacher.role === 'rejected' || teacher.role==='teacher' ? <button disabled className="mt-4 btn btn-success text-white text-lg flex-1">Reject</button> : <button onClick={() => handleReject(teacher)} className="mt-4 btn btn-error text-white text-lg flex-1">Reject</button>
                                 }</td>
 
 

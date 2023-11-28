@@ -6,6 +6,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import teacher from "../../assets/images/teacher2.gif"
 const TechTOLetsSkillUp = () => {
     const { user } = useContext(AuthContext);
     console.log(user)
@@ -73,7 +74,14 @@ const TechTOLetsSkillUp = () => {
     return (
         <div className="w-[90vw] mx-auto mt-20">
             {
-                filterApproveData ? 'You are Teacher now'
+                filterApproveData ? 
+                <div className="flex  justify-center items-center lg:h-[80vh]">
+                    <div className="lg:w-[60vw] h-[30rem] rounded-3xl flex flex-col md:flex-row justify-center items-center bg-gradient-to-r from-[#EFD8C9]">
+                        <h1 className="lg:text-3xl font-bold text-center">Congratualtion! <br /> You are selelcted as a teacher</h1>
+                    <img src={teacher} alt="" />
+
+                    </div>
+                </div>
                 :
                 <div className="w-[70vw] mx-auto">
                 <h1 className="text-black text-center text-[2.5rem] font-semibold">Join as a teacher</h1>

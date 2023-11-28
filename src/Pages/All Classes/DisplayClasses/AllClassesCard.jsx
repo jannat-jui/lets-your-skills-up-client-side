@@ -1,16 +1,15 @@
 
 import { Tooltip } from "react-tooltip";
-import coursetext from "../../../assets/images/coursetest.png"
 import user from "../../../assets/images/user.svg"
 import { Link } from "react-router-dom";
 const AllClassesCard = ({classs}) => {
     return (
-        <div className="w-[23rem] h-[31rem] rounded-lg border-2 border-[#FB9C46] rounded-tr-[5rem] bg-white">
+        <div className="w-[20em] h-[31rem] rounded-lg border-2 border-[#FB9C46] rounded-tr-[5rem] bg-white">
 
             <div className="relative">
-                <img className="rounded-tr-[5rem] h-[16rem] w-full" src={classs?.image} alt="" />
+                <img className="rounded-tr-[5rem] h-[14rem] w-full" src={classs?.image} alt="" />
 
-                <div className="w-[4.625rem] h-[2.06rem] flex gap-2 justify-center items-center bg-white  rounded-[1.25rem] absolute top-[13rem] left-4">
+                <div className="w-[4.625rem] h-[2.06rem] flex gap-2 justify-center items-center bg-white  rounded-[1.25rem] absolute top-[11rem] left-4">
                     <img src={user} alt="" />
                     <p>{classs?.enrollCount}</p>
                 </div>
@@ -26,7 +25,7 @@ const AllClassesCard = ({classs}) => {
                 <a id="my-anchor-element">{classs?.description}</a>
                 <Tooltip
                     anchorSelect="#my-anchor-element"
-                    content={classs?.description}
+                    content="View Details"
                 />
                 </div>
 

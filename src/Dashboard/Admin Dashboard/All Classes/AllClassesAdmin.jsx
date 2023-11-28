@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const AllClassesAdmin = () => {
@@ -22,7 +24,13 @@ const AllClassesAdmin = () => {
             console.log(res.data)
             if(res.data.modifiedCount > 0){
                 refetch()
-                alert('class is approved')
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Class Approved",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
                 
             }
         })
@@ -37,7 +45,13 @@ const AllClassesAdmin = () => {
             console.log(res.data)
             if(res.data.modifiedCount > 0){
                 refetch()
-                alert('class is rrejected')
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Class is Rejected",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
                 
             }
         })
@@ -46,14 +60,14 @@ const AllClassesAdmin = () => {
     
 
     return (
-        <div>
+        <div className="mx-[5%] pt-12">
            <h1 className="text-center text-3xl">All Classes</h1>
 
            <div>
            <div className="overflow-x-auto rounded-tl-2xl rounded-tr-2xl mt-8">
                         <table className="table  rounded-tl-2xl rounded-tr-2xl">
                             {/* head */}
-                            <thead className="bg-gray-400 h-[4.5rem] rounded-tl-2xl rounded-tr-2xl">
+                            <thead className="bg-orange-300 text-lg h-[4.5rem] rounded-tl-2xl rounded-tr-2xl">
                                 <tr>
                                     <th className="text-white font-semibold"></th>
                                     <th className="text-white font-semibold">Title</th>
@@ -72,17 +86,17 @@ const AllClassesAdmin = () => {
                                     classes.map((classs, index)=><tr key={classs._id}>
                                         <th>{index+1}</th>
                                         <td>{classs.title}</td>
-                                        <th><img src={classs?.image} alt="" /></th>
+                                        <th><img className="w-[6rem] h-[4rem]" src={classs?.image} alt="" /></th>
                                         <td>{classs.email}</td>
-                                        <td>{classs.description}</td>
+                                        <td className="">{classs.description}</td>
                                         <td>{
-                                            classs.status==='approved' ? <button disabled className="btn  rounded-md  btn-neutral border-none btn-xs">Approve</button> :  <button onClick={()=>handleMakeApprove(classs)} className="btn  rounded-md  btn-neutral border-none btn-xs">Approve</button>
+                                            classs.status==='approved' ? <button disabled className="btn  rounded-md  btn-neutral border-none btn-sm">Approve</button> :  <button onClick={()=>handleMakeApprove(classs)} className="btn  rounded-md  btn-success text-white border-none btn-sm">Approve</button>
                                            }</td>
                                         
                                         <td>{
-                                            classs.status==='rejected' ? <button disabled className="btn  rounded-md  btn-error border-none btn-xs">Rejected</button> :  <button onClick={()=>handleReject(classs)} className="btn  rounded-md  btn-error border-none btn-xs">Rejected</button>
+                                            classs.status==='rejected' ? <button disabled className="btn  rounded-md  btn-error border-none btn-sm">Rejected</button> :  <button onClick={()=>handleReject(classs)} className="btn  rounded-md  btn-error text-white border-none btn-sm">Rejected</button>
                                            }</td>
-                                        <td>{classs.status==='approved' ? <button className="btn">See Prograss</button> : <button disabled className="btn">See Progress</button>}
+                                        <td>{classs.status==='approved' ? <Link to={`/dashboard/classes/${classs._id}`}><button className="btn btn-md btn-info">See Prograss</button></Link> : <button disabled className="btn btn-md">See Progress</button>}
                                             </td>
                                        
                                     </tr>)

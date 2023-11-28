@@ -103,26 +103,14 @@ const CheckOutForm = ({price, classData}) => {
             timer: 1500
           });
           navigate('/dashboard/enroll-classes')
-        //    refetch();
-          //  if(res.data?.paymentResult?.insertedId){
-            
-
-          //   const updateRes = await axios.patch(`http://localhost:5000/addclasses/adminroute/approved/${classData._id}`);
-          //   console.log(updateRes.data)
-          //   if(updateRes.data.modifiedCount > 0){
-          //     //
-          //     navigate('/dashboard/enroll-classes')
-          // }
-
-            
-          //  }
+        
 
           }
         }
     }
     return (
         <form onSubmit={handleSubmit}>
-            <CardElement className="border-2 h-14 pt-4 p-4"
+            <CardElement className="border-2 border-orange-600 h-14 pt-4 p-4"
         options={{
           style: {
             base: {
@@ -143,7 +131,7 @@ const CheckOutForm = ({price, classData}) => {
         transactionId && <p className="text-green-500 text-lg">Your transaction ID: {transactionId}</p>
       }
      <div className=" text-center">
-     <button className="w-[400px] h-[4rem] btn btn-neutral mt-12" type="submit" disabled={!stripe}>
+     <button className="w-[200px] lg:w-[400px] h-[2rem] lg:h-[4rem] btn btn-neutral mt-12 text-xl" type="submit" disabled={!stripe}>
         Pay
       </button>
      </div>

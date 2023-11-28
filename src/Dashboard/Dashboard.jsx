@@ -18,8 +18,8 @@ const Dashboard = () => {
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col">
+                <label htmlFor="my-drawer-2" className="btn bg-[#ff891b] border-none text-white w-full btn-primary drawer-button lg:hidden">Open Dashboards</label>
                 <Outlet></Outlet>
-                <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
             </div>
             <div className="drawer-side ">
@@ -48,7 +48,7 @@ const Dashboard = () => {
                                     } to="/dashboard/classes">All Classes</NavLink></li>
                             <li><NavLink className={({ isActive }) =>
                                         isActive ? 'font-bold btn w-full text-white text-lg bg-[#FB9C46] hover:text-black hover:bg-white mt-8' : 'font-semibold text-xl btn btn-outline border-[#FB9C46] hover:text-black w-full mt-8 border-2 hover:bg-white hover:rounded-tr-3xl'
-                                    } to="/dashboard/profile">Profile</NavLink></li>
+                                    } to="/dashboard/admin-profile">Profile</NavLink></li>
 
                         </>
 
