@@ -24,6 +24,7 @@ import TeacherProfile from "../Dashboard/Teacher Dashboard/TeacherProfile/Teache
 import AdminClassDetails from "../Dashboard/Admin Dashboard/All Classes/Class Details Adminn/AdminClassDetails";
 import AdminProfile from "../Dashboard/Admin Dashboard/Admin Profile/AdminProfile";
 import ErrorElement from "../Components/Error Page/ErrorElement";
+import AdminRoutes from "./AdminRoutes";
 
 const router = createBrowserRouter([
     {
@@ -92,15 +93,15 @@ const router = createBrowserRouter([
             //admin dashbaord
             {
                 path: 'users',
-                element: <AllUsers/>
+                element: <AdminRoutes><AllUsers/></AdminRoutes>
             },
             {
                 path: 'teacher-request',
-                element: <TeacherRequest/>
+                element: <AdminRoutes><TeacherRequest/></AdminRoutes>
             },
             {
                 path: 'classes',
-                element: <AllClassesAdmin/>
+                element: <AdminRoutes><AllClassesAdmin/></AdminRoutes>
             },
             {
                 path: 'classes/:id',
@@ -109,7 +110,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'admin-profile',
-                element: <AdminProfile/>
+                element: <AdminRoutes><AdminProfile/></AdminRoutes>
 
             },
 

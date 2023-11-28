@@ -1,35 +1,59 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import {
-    Card,
-    CardHeader,
-    CardBody,
-    Typography,
-} from "@material-tailwind/react";
+
 import Swal from "sweetalert2";
+import { useState } from "react";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const TeacherRequest = () => {
     const axiosSecure = useAxiosSecure()
+    const axiosPublic = useAxiosPublic()
+    const [currentPage, setCurrentPage] = useState(0);
+    const [itemsPerPage, setItemsPerPage] = useState(10);
+
+
     const { data: teachers = [], refetch } = useQuery({
-        queryKey: ['teachers'],
+        queryKey: ['teachers',currentPage, itemsPerPage],
         queryFn: async () => {
-            const res = await axiosSecure.get('/teacherrequest')
+            const res = await axiosSecure.get(`/teacherrequest?page=${currentPage}&size=${itemsPerPage}`)
             return res.data;
         }
     })
-    console.log(teachers)
 
-    // const handleApprove = (teacher) => {
-    //     axiosSecure.patch(`/teacherrequest/teacher/${teacher._id}`)
-    //         .then(res => {
-    //             console.log(res.data)
-    //             if (res.data.modifiedCount > 0) {
-    //                 refetch()
-    //                 alert('he is teacher now')
+    const { data: teacherrequestcount = [] } = useQuery({
+        queryKey: ['teacherrequestcount'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/teacherrequestcount')
+            return res.data;
+        }
+    })
+    const [count, setCount] = useState(teacherrequestcount?.count)
+    const numberOfPages = Math.ceil(count / itemsPerPage);
+    const pages = []
+    for(let i = 0; i < numberOfPages; i++){
+        pages.push(i)
+    }
+    const handleItemsPerPage = e => {
+        const val = parseInt(e.target.value);
+        console.log(val);
+        setItemsPerPage(val);
+        setCurrentPage(0);
+    }
 
-    //             }
-    //         })
-    // }
+    const handlePrevPage = () => {
+        if (currentPage > 0) {
+            setCurrentPage(currentPage - 1);
+        }
+        refetch()
+    }
+
+    const handleNextPage = () => {
+        if (currentPage < pages.length - 1) {
+            setCurrentPage(currentPage + 1);
+        }
+        refetch()
+    }
+    // console.log(teachers)
 
     const handleApprove = teacher => {
         const updateRole = {
@@ -122,6 +146,27 @@ const TeacherRequest = () => {
                     </tbody>
                 </table>
             </div>
+
+
+            <div className='text-center mb-10 space-x-6 absolute bottom-0  left-[45%]'>
+              
+                <button className="btn  btn-outline border-orange-500 border-4 w-[7rem] text-lg" onClick={handlePrevPage}>Prev</button>
+                {
+                    pages.map(page => <button
+                        className={currentPage === page ? 'btn bg-orange-500 text-xl font-bold text-black' : 'btn btn-outline border-orange-500 border-4 text-xl'}
+                        onClick={() => setCurrentPage(page)}
+                        key={page}
+                    >{page}</button>)
+                }
+                <button className="btn btn-outline border-orange-500 border-4 w-[7rem] text-lg" onClick={handleNextPage}>Next</button>
+                <select className="btn bg-orange-500 text-xl" value={itemsPerPage} onChange={handleItemsPerPage} name="" id="">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                </select>
+            </div>
+
+            
         </div>
     );
 };

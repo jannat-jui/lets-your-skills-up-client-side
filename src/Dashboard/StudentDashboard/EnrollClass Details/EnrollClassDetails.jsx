@@ -32,7 +32,7 @@ const EnrollClassDetails = () => {
     }, []);
     console.log(id)
     const axiosPublic = useAxiosPublic()
-    const { data: assignments = [], refetch } = useQuery({
+    const { data: assignments = [],  } = useQuery({
         queryKey: ['assignments'],
         queryFn: async () => {
             const res = await axiosPublic.get('/assignments')
