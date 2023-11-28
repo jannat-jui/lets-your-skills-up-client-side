@@ -126,7 +126,7 @@ const ClassDetailsTeacher = () => {
                     <div className="w-[17rem] h-[15rem]  bg-gradient-to-r from-[#EFD8C9] to-[#efd8c971] border-b-8 border-b-[#55fb46] items-center flex flex-col justify-center text-center gap-5">
                         <MdAssignment className="text-[6rem] ml-0"/>
 
-                        <p className="text-3xl font-semibold">{filterforperday?.length}</p>
+                        <p className="text-3xl font-semibold">{filterforperday?.length>0? filterforperday?.length : <p className="text-xl">No assignment submit today</p>}</p>
                         <p className="text-2xl font-semibold">Per Day Submission</p>
 
                     </div>
