@@ -3,13 +3,18 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { useEffect } from "react";
 
 
 const AllUsers = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     const [search, setSearch] = useState('')
     const axiosPublic = useAxiosPublic()
     const [currentPage, setCurrentPage] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(10);
+    const [count, setCount] = useState(0)
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -25,15 +30,21 @@ const AllUsers = () => {
         }
     })
     // console.log(users)
-    const { data: userscount = [] } = useQuery({
-        queryKey: ['userscount'],
-        queryFn: async () => {
-            const res = await axiosPublic.get('/admin-stats')
-            return res.data;
-        }
-    })
 
-    const [count, setCount] = useState(userscount?.users)
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await axiosPublic.get('/admin-stats');
+                setCount(res.data.users);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+    
+        fetchData(); // Call the async function inside useEffect
+    }, []);
+
+    
     const numberOfPages = Math.ceil(count / itemsPerPage);
     const pages = []
     for (let i = 0; i < numberOfPages; i++) {

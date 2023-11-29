@@ -24,6 +24,7 @@ const MyClass = () => {
 
     const [currentPage, setCurrentPage] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(10);
+    const [count, setCount] = useState(0)
 
     const { user } = useContext(AuthContext);
     const { refetch, data: classs = [] } = useQuery({
@@ -33,15 +34,20 @@ const MyClass = () => {
             return res.data;
         }
     })
-    const { data: classescount = [] } = useQuery({
-        queryKey: ['classescount',user?.email],
-        queryFn: async () => {
-            const res = await axiosPublic.get(`/classescount/email?email=${user.email}`)
-            return res.data;
-        }
-    })
 
-    const [count, setCount] = useState(classescount?.totalCount)
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await axiosPublic.get(`/classescount/email?email=${user.email}`);
+                setCount(res.data.totalCount);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+    
+        fetchData(); // Call the async function inside useEffect
+    }, []);
+
     const numberOfPages = Math.ceil(count / itemsPerPage);
     const pages = []
     for (let i = 0; i < numberOfPages; i++) {
@@ -100,7 +106,7 @@ const MyClass = () => {
                 {
                     classs.map(classss => <Card key={classss._id} className="w-96">
                         <CardHeader floated={false} className="h-80">
-                            <img className="w-full" src={classss?.image} alt="profile-picture" />
+                            <img className="w-full h-80" src={classss?.image} alt="profile-picture" />
                         </CardHeader>
                         <CardBody className="text-left">
                             <Typography variant="h4" color="blue-gray" className="mb-2">

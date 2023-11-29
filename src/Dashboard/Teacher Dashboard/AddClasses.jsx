@@ -6,11 +6,15 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { useEffect } from "react";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 
 const AddClasses = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
     const { user } = useContext(AuthContext);
     console.log(user)
     const navigate = useNavigate();
@@ -25,7 +29,7 @@ const AddClasses = () => {
     const { mutate } = useMutation({
         mutationKey: ['food'],
         mutationFn: (addingData) => {
-          return axios.post('http://localhost:5000/addclasses', addingData, { withCredentials: true, })
+          return axios.post('https://b8a12-server-side-jannat-jui.vercel.app/addclasses', addingData, { withCredentials: true, })
         },
         onSuccess: () => {
           Swal.fire({

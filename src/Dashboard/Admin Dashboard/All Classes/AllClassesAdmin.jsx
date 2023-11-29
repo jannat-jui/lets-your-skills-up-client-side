@@ -4,12 +4,17 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import { useEffect } from "react";
 
 
 const AllClassesAdmin = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     const axiosSecure = useAxiosSecure()
     const [currentPage, setCurrentPage] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(10);
+    const [count, setCount] = useState(0)
     const axiosPublic = useAxiosPublic();
 
     const { data: classes = [], refetch } = useQuery({
@@ -20,15 +25,22 @@ const AllClassesAdmin = () => {
         }
     })
     // console.log(classes)
-    const { data: classescount = [] } = useQuery({
-        queryKey: ['classescount'],
-        queryFn: async () => {
-            const res = await axiosPublic.get('/allclassescount')
-            return res.data;
-        }
-    })
 
-    const [count, setCount] = useState(classescount?.count)
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await axiosPublic.get('/allclassescount');
+                setCount(res.data.count);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+    
+        fetchData(); // Call the async function inside useEffect
+    }, []);
+
+
+
     const numberOfPages = Math.ceil(count / itemsPerPage);
     const pages = []
     for (let i = 0; i < numberOfPages; i++) {

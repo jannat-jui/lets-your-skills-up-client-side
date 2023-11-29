@@ -3,10 +3,13 @@ import DisplayAllClasses from "./DisplayClasses/DisplayAllClasses";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useState } from "react";
 import Loading from "../../Components/Loading/Loading";
+import { useEffect } from "react";
 
 
 const AllClasses = () => {
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     const [currentPage, setCurrentPage] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(10);
     
@@ -20,17 +23,22 @@ const AllClasses = () => {
     })
     // console.log(classes)
 
-    const { data: classescount = [] } = useQuery({
-        queryKey: ['classescount'],
-        queryFn: async () => {
-            const res = await axiosPublic.get('/addclassescount')
-            return res.data;
-        }
-    })
-    // console.log(classescount?.count)
+   
 
 
-    const [count, setCount] = useState(classescount?.count)
+    const [count, setCount] = useState(0)
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await axiosPublic.get('/addclassescount');
+                setCount(res.data.count);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+    
+        fetchData(); // Call the async function inside useEffect
+    }, []);
     const numberOfPages = Math.ceil(count / itemsPerPage);
     const pages = []
     for(let i = 0; i < numberOfPages; i++){

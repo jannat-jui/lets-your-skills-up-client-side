@@ -7,9 +7,13 @@ import {
     Typography,
 } from "@material-tailwind/react";
 import { Link, useLoaderData } from "react-router-dom";
+import { useEffect } from "react";
 const ClassDetails = () => {
     const classs = useLoaderData();
     // console.log(classs)
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <div className="">
             <Card className="w-full max-w-[80vw] mx-auto lg:pt-20  mt-[5rem] flex-col lg:flex-row gap-10">

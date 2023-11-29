@@ -4,13 +4,17 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import { useEffect } from "react";
 
 const TeacherRequest = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     const axiosSecure = useAxiosSecure()
     const axiosPublic = useAxiosPublic()
     const [currentPage, setCurrentPage] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(10);
-
+    const [count, setCount] = useState(0)
 
     const { data: teachers = [], refetch } = useQuery({
         queryKey: ['teachers',currentPage, itemsPerPage],
@@ -20,14 +24,27 @@ const TeacherRequest = () => {
         }
     })
 
-    const { data: teacherrequestcount = [] } = useQuery({
-        queryKey: ['teacherrequestcount'],
-        queryFn: async () => {
-            const res = await axiosPublic.get('/teacherrequestcount')
-            return res.data;
-        }
-    })
-    const [count, setCount] = useState(teacherrequestcount?.count)
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await axiosPublic.get('/teacherrequestcount');
+                setCount(res.data.count);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+    
+        fetchData(); // Call the async function inside useEffect
+    }, []);
+
+    // const { data: teacherrequestcount = [] } = useQuery({
+    //     queryKey: ['teacherrequestcount'],
+    //     queryFn: async () => {
+    //         const res = await axiosPublic.get('/teacherrequestcount')
+    //         return res.data;
+    //     }
+    // })
+    
     const numberOfPages = Math.ceil(count / itemsPerPage);
     const pages = []
     for(let i = 0; i < numberOfPages; i++){
@@ -122,7 +139,7 @@ const TeacherRequest = () => {
                             teachers.map((teacher, index) => <tr key={teacher._id}>
                                 <th className="text-xs lg:text-base">{index + 1}</th>
                                 <th className="text-xs lg:text-base">{teacher?.name}</th>
-                                <td><img className="w-[2rem] lg:w-[4rem] h-[2rem] lg:h-[4rem] rounded-[4rem] border-2 border-black" src={teacher?.image} alt="" /></td>
+                                <td><img className="w-[2rem] lg:w-[4rem] h-[2rem] lg:h-[4rem] rounded-[4rem] border-2 border-black" src={teacher?.photo} alt="" /></td>
                                 <td className=" text-xs lg:text-base">{teacher?.experince}</td>
                                 <td className=" text-xs lg:text-base">{teacher?.title}</td>
                                 <td className=" text-xs lg:text-base">{teacher?.category}</td>

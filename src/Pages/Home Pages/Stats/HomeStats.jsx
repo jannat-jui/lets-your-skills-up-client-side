@@ -11,11 +11,14 @@ const HomeStats = () => {
     
     const axiosPublic = useAxiosPublic()
 
-    const {data: stats} = useQuery({
+    const {data: stats, refetch} = useQuery({
         queryKey: ['admin-stats'],
         queryFn: async()=>{ 
             const res = await axiosPublic.get('/admin-stats');
             return res.data;
+        },
+        onSuccess: (data)=>{
+            refetch()
         }
     })
     // console.log(stats)

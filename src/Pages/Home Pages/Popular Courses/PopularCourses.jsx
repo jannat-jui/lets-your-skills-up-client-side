@@ -62,7 +62,7 @@ const PopularCourses = () => {
                     courses.slice(0,6)?.map(course=><SwiperSlide key={course._id} className='pb-12'>
                     <Card className="mt-6 w-96 relative">
                         <CardHeader color="blue-gray" className="relative h-56">
-                            <img
+                            <img className='h-56'
                                 src={course?.image}
                                 alt="card-image"
                             />

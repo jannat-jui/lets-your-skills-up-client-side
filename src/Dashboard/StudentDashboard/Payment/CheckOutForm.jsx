@@ -92,7 +92,7 @@ const CheckOutForm = ({price, classData, refetch}) => {
 
             }
            const res = await axiosSecure.post('/payments', payment)
-           const updateRes = await axios.patch(`http://localhost:5000/addclasses/adminroute/approved/${classData?._id}`);
+           const updateRes = await axios.patch(`https://b8a12-server-side-jannat-jui.vercel.app/addclasses/adminroute/approved/${classData?._id}`);
           //  console.log(updateRes.data)
           //  console.log(res.data)
            Swal.fire({
