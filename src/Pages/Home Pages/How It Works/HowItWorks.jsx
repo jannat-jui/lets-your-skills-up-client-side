@@ -8,7 +8,7 @@ const HowItWorks = () => {
         <div className="px-4 md:px-[10%] mt-32 bg-gradient-to-r from-[#faf5ef80]">
             <div className="py-16 flex justify-between items-center flex-col-reverse lg:flex-row gap-4">
                 <div data-aos="zoom-in-down">
-                    <h1 className="text-[#393939] text-2xl md:text-[2rem] font-semibold">Unlock Your Potential: <br /> <span className="text-[#FB9C46]">Here’s How It Works</span> </h1>
+                    <h1 className="text-[#393939] text-2xl leading-[3rem] md:text-[2rem] font-semibold">Unlock Your Potential: <br /> <span className="text-[#FB9C46]">Here’s How It Works</span> </h1>
                     <p className="text-[#6C6C6C] text-base mt-3 lg:w-[65%]">Discover the seamless journey to skill enhancement with our platform. From enrollment to mastery, our user-friendly process ensures an enriching experience. Explore curated courses, engage in interactive learning, and track your progress effortlessly. Join us on the path to success</p>
 
                     <div className="mt-5">

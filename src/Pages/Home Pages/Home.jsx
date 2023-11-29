@@ -8,6 +8,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import PopularCourses from "./Popular Courses/PopularCourses";
 import HowItWorks from "./How It Works/HowItWorks";
+import FAQ from "./FAQ/FAQ";
 
 
 const Home = () => {
@@ -23,6 +24,7 @@ const Home = () => {
             <HomeStats/>
             <JoinAsATeacher/>
             <HowItWorks/>
+            <FAQ/>
             
         </div>
     );
