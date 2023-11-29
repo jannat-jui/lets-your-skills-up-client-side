@@ -5,7 +5,7 @@ import workbg from "../../../assets/images/workbg.png"
 
 const HowItWorks = () => {
     return (
-        <div className="px-4 md:px-[10%] mt-32 bg-gradient-to-r from-[#faf5ef80]">
+        <div className="px-4 md:px-[10%] lg:mt-32 bg-gradient-to-r from-[#faf5ef80]">
             <div className="py-16 flex justify-between items-center flex-col-reverse lg:flex-row gap-4">
                 <div data-aos="zoom-in-down">
                     <h1 className="text-[#393939] text-2xl leading-[3rem] md:text-[2rem] font-semibold">Unlock Your Potential: <br /> <span className="text-[#FB9C46]">Here’s How It Works</span> </h1>

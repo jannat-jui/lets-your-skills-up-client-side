@@ -5,22 +5,21 @@ import {
 } from "@material-tailwind/react";
 import { useState } from "react";
 import faqbg from "../../../assets/images/faq.png"
-import tick from "../../../assets/images/Tick Square.svg"
 
 const FAQ = () => {
     const [open, setOpen] = useState(1);
 
     const handleOpen = (value) => setOpen(open === value ? 0 : value);
     return (
-        <div className="flex justify-between items-center mx-[8%] mt-20">
+        <div className="flex justify-between items-center mx-[8%] mt-20 flex-col lg:flex-row">
             <div data-aos="flip-left"
      data-aos-easing="ease-out-cubic"
      data-aos-duration="2000" className="w-[23rem] h-[23rem] bg-[#efd8c9a2] rounded-[3rem] relative">
-                <img className="w-[27rem] h-[30rem]  absolute -top-28" src={faqbg} alt="" />
+                <img className="md:w-[27rem] md:h-[30rem]  absolute md:-top-28" src={faqbg} alt="" />
             </div>
 
-           <div data-aos="fade-up"
-     data-aos-anchor-placement="bottom-bottom" className="w-[50vw]">
+           <div
+     data-aos-anchor-placement="bottom-bottom" className="lg:w-[50vw]">
         <h1 className="text-[#393939] text-[2rem] font-semibold">What Will You <span className="text-[#FB9C46]">Get</span> ?</h1>
            <Accordion open={open === 1} className="mb-2 rounded-lg border mt-8 border-blue-gray-100 px-4">
                 <AccordionHeader

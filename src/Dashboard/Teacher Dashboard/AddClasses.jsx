@@ -72,7 +72,7 @@ const AddClasses = () => {
     }
     return (
         <div className=" mt-20">
-        <div className="w-[70vw] mx-auto">
+        <div className="w-[90vw] lg:w-[70vw] mx-auto">
             <h1 className="text-black text-center text-[2.5rem] font-semibold">Add Classes</h1>
 
             <form onSubmit={handleSubmit(onSubmit)}>

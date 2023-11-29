@@ -111,7 +111,7 @@ const ClassDetailsTeacher = () => {
                     <div className="w-[17rem] h-[15rem]  bg-gradient-to-r from-[#EFD8C9] to-[#efd8c971] border-b-8 border-b-[#fb46ec] items-center flex flex-col justify-center text-center gap-5">
                         <PiStudentBold className="text-[6rem] ml-0" />
 
-                        <p className="text-3xl font-semibold">{classData?.enrollCount}</p>
+                        <p className="text-3xl font-semibold">{classData?.enrollCount>0? classData?.enrollCount : 0}</p>
                         <p className="text-2xl font-semibold">Total Enrollment</p>
 
                     </div>

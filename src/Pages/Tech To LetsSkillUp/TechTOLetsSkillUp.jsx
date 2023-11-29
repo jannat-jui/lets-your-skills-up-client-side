@@ -83,7 +83,7 @@ const TechTOLetsSkillUp = () => {
                     </div>
                 </div>
                 :
-                <div className="w-[70vw] mx-auto">
+                <div className="md:w-[70vw] mx-auto">
                 <h1 className="text-black text-center text-[2.5rem] font-semibold">Join as a teacher</h1>
 
                 <form onSubmit={handleSubmit(onSubmit)}>

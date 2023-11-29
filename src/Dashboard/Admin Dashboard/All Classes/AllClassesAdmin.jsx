@@ -136,7 +136,7 @@ const AllClassesAdmin = () => {
                                         <td>{
                                             classs.status==='rejected' ? <button disabled className="btn  rounded-md  btn-error border-none btn-sm">Rejected</button> :  <button onClick={()=>handleReject(classs)} className="btn  rounded-md  btn-error text-white border-none btn-sm">Rejected</button>
                                            }</td>
-                                        <td>{classs.status==='approved' ? <Link to={`/dashboard/classes/${classs._id}`}><button className="btn btn-md btn-info">See Prograss</button></Link> : <button disabled className="btn btn-md">See Progress</button>}
+                                        <td>{classs.status==='approved' ? <Link to={`/dashboard/classes/${classs._id}`}><button className="btn btn-md btn-info text-white">See Prograss</button></Link> : <button disabled className="btn btn-md">See Progress</button>}
                                             </td>
                                        
                                     </tr>)
@@ -148,18 +148,18 @@ const AllClassesAdmin = () => {
 
            </div>
 
-           <div className='text-center mb-10 space-x-6 absolute bottom-0  left-[45%]'>
+           <div className='text-center mb-10 space-x-4 md:space-x-6 mt-20'>
               
-              <button className="btn  btn-outline border-orange-500 border-4 w-[7rem] text-lg" onClick={handlePrevPage}>Prev</button>
+              <button className="btn  btn-outline border-orange-500 border-4 md:w-[7rem] md:text-lg" onClick={handlePrevPage}>Prev</button>
               {
                   pages.map(page => <button
-                      className={currentPage === page ? 'btn bg-orange-500 text-xl font-bold text-black' : 'btn btn-outline border-orange-500 border-4 text-xl'}
+                      className={currentPage === page ? 'btn bg-orange-500 text-xl font-bold text-white' : 'btn btn-outline border-orange-500 border-4 text-xl'}
                       onClick={() => setCurrentPage(page)}
                       key={page}
                   >{page}</button>)
               }
-              <button className="btn btn-outline border-orange-500 border-4 w-[7rem] text-lg" onClick={handleNextPage}>Next</button>
-              <select className="btn bg-orange-500 text-xl" value={itemsPerPage} onChange={handleItemsPerPage} name="" id="">
+              <button className="btn btn-outline border-orange-500 border-4 md:w-[7rem] md:text-lg" onClick={handleNextPage}>Next</button>
+              <select className="btn bg-orange-500 text-xl text-white" value={itemsPerPage} onChange={handleItemsPerPage} name="" id="">
                   <option value="10">10</option>
                   <option value="20">20</option>
                   <option value="50">50</option>

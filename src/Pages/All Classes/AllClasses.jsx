@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import DisplayAllClasses from "./DisplayClasses/DisplayAllClasses";
-import axios from "axios";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useState } from "react";
 import Loading from "../../Components/Loading/Loading";
@@ -61,7 +60,7 @@ const AllClasses = () => {
         return <Loading/>
     }
     return (
-        <div className="px-[8%] relative h-[90vh]">
+        <div className="px-[5%]">
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-5 mt-20 lg:pt-20 justify-items-center items-center gap-8">
                 {
@@ -69,18 +68,18 @@ const AllClasses = () => {
                 }
             </div>
 
-            <div className='text-center mb-10 space-x-6 absolute bottom-0  left-[40%]'>
+            <div className='text-center mb-10 space-x-4 md:space-x-6 mt-20'>
               
-                <button className="btn  btn-outline border-orange-500 border-4 w-[7rem] text-lg" onClick={handlePrevPage}>Prev</button>
+                <button className="btn  btn-outline border-orange-500 border-4 md:w-[7rem] md:text-lg" onClick={handlePrevPage}>Prev</button>
                 {
                     pages.map(page => <button
-                        className={currentPage === page ? 'btn bg-orange-500 text-xl font-bold text-black' : 'btn btn-outline border-orange-500 border-4 text-xl'}
+                        className={currentPage === page ? 'btn bg-orange-500 text-xl font-bold text-white' : 'btn btn-outline border-orange-500 border-4 text-xl'}
                         onClick={() => setCurrentPage(page)}
                         key={page}
                     >{page}</button>)
                 }
-                <button className="btn btn-outline border-orange-500 border-4 w-[7rem] text-lg" onClick={handleNextPage}>Next</button>
-                <select className="btn bg-orange-500 text-xl" value={itemsPerPage} onChange={handleItemsPerPage} name="" id="">
+                <button className="btn btn-outline border-orange-500 border-4 md:w-[7rem] md:text-lg" onClick={handleNextPage}>Next</button>
+                <select className="btn bg-orange-500 text-xl text-white" value={itemsPerPage} onChange={handleItemsPerPage} name="" id="">
                     <option value="10">10</option>
                     <option value="20">20</option>
                     <option value="50">50</option>

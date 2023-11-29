@@ -22,8 +22,8 @@ const Footer = () => {
         <div className="mx-auto w-full px-[8%]">
           <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
             <Typography variant="h5" className="mb-6">
-              <img src={logo} alt="" />
-              <h1>LetsSkillUp</h1>
+              <img className="w-[10rem]" src={logo} alt="" />
+              <h1 className="text-3xl font-serif mt-4">LetsSkillUp</h1>
             </Typography>
             <div className="grid grid-cols-3 justify-between gap-4">
               {LINKS.map(({ title, items }) => (

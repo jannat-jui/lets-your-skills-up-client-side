@@ -53,7 +53,7 @@ const TeacherRequest = () => {
         }
         refetch()
     }
-    console.log(teachers)
+    // console.log(teachers)
 
     const handleApprove = teacher => {
         const updateRole = {
@@ -102,17 +102,17 @@ const TeacherRequest = () => {
         <div>
             <div className="overflow-x-auto rounded-tl-2xl rounded-tr-2xl mt-20 mx-[5%]">
                 <table className="table  rounded-tl-2xl rounded-tr-2xl ">
-                    <thead className="bg-orange-300 text-xl h-[4.5rem] rounded-tl-2xl rounded-tr-2xl">
+                    <thead className="bg-orange-300 text-xs md:text-base lg:text-xl h-[4.5rem] rounded-tl-2xl rounded-tr-2xl">
                         <tr>
-                            <th className="text-white font-semibold"></th>
-                            <th className="text-white font-semibold">Name</th>
-                            <th className="text-white font-semibold">Image</th>
-                            <th className="text-white font-semibold">Experience</th>
-                            <th className="text-white font-semibold">Title</th>
-                            <th className="text-white font-semibold">Category</th>
-                            <th className="text-white font-semibold">Status</th>
-                            <th className="text-white font-semibold">Approve</th>
-                            <th className="text-white font-semibold">Rejeect</th>
+                            <th className="text-white text-xs lg:text-base lg:font-semibold"></th>
+                            <th className="text-white text-xs lg:text-base lg:font-semibold">Name</th>
+                            <th className="text-white text-xs lg:text-base lg:font-semibold">Image</th>
+                            <th className="text-white text-xs lg:text-base lg:font-semibold">Experience</th>
+                            <th className="text-white text-xs lg:text-base lg:font-semibold">Title</th>
+                            <th className="text-white text-xs lg:text-base lg:font-semibold">Category</th>
+                            <th className="text-white text-xs lg:text-base lg:font-semibold">Status</th>
+                            <th className="text-white text-xs lg:text-base lg:font-semibold">Approve</th>
+                            <th className="text-white text-xs lg:text-base lg:font-semibold">Rejeect</th>
 
                         </tr>
                     </thead>
@@ -120,14 +120,14 @@ const TeacherRequest = () => {
                         {/* row 1 */}
                         {
                             teachers.map((teacher, index) => <tr key={teacher._id}>
-                                <th>{index + 1}</th>
-                                <th>{teacher?.name}</th>
-                                <td><img className="w-[4rem] h-[4rem] rounded-[4rem] border-2 border-black" src={teacher?.image} alt="" /></td>
-                                <td>{teacher?.experince}</td>
-                                <td>{teacher?.title}</td>
-                                <td>{teacher.status}</td>
-                                <td>{teacher.role==='teacher' ? 'accepted' : teacher.role==='rejected'? 'rejected': 'pending'}</td>
-                                <td>{
+                                <th className="text-xs lg:text-base">{index + 1}</th>
+                                <th className="text-xs lg:text-base">{teacher?.name}</th>
+                                <td><img className="w-[2rem] lg:w-[4rem] h-[2rem] lg:h-[4rem] rounded-[4rem] border-2 border-black" src={teacher?.image} alt="" /></td>
+                                <td className=" text-xs lg:text-base">{teacher?.experince}</td>
+                                <td className=" text-xs lg:text-base">{teacher?.title}</td>
+                                <td className=" text-xs lg:text-base">{teacher?.category}</td>
+                                <td className=" text-xs lg:text-base">{teacher.role==='teacher' ? 'accepted' : teacher.role==='rejected'? 'rejected': 'pending'}</td>
+                                <td className=" text-xs lg:text-base">{
                                     teacher.role === 'teacher' || teacher.role==='rejected' ? <button disabled className="mt-4 btn btn-success text-white text-lg flex-1">Approve</button> : 
                                     
                                     <button onClick={() => handleApprove(teacher)} className="mt-4 btn btn-success text-white text-lg flex-1">Approve</button>
@@ -148,23 +148,23 @@ const TeacherRequest = () => {
             </div>
 
 
-            <div className='text-center mb-10 space-x-6 absolute bottom-0  left-[45%]'>
+            <div className='text-center mb-10 space-x-4 md:space-x-6 mt-20'>
               
-                <button className="btn  btn-outline border-orange-500 border-4 w-[7rem] text-lg" onClick={handlePrevPage}>Prev</button>
-                {
-                    pages.map(page => <button
-                        className={currentPage === page ? 'btn bg-orange-500 text-xl font-bold text-black' : 'btn btn-outline border-orange-500 border-4 text-xl'}
-                        onClick={() => setCurrentPage(page)}
-                        key={page}
-                    >{page}</button>)
-                }
-                <button className="btn btn-outline border-orange-500 border-4 w-[7rem] text-lg" onClick={handleNextPage}>Next</button>
-                <select className="btn bg-orange-500 text-xl" value={itemsPerPage} onChange={handleItemsPerPage} name="" id="">
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="50">50</option>
-                </select>
-            </div>
+              <button className="btn  btn-outline border-orange-500 border-4 md:w-[7rem] md:text-lg" onClick={handlePrevPage}>Prev</button>
+              {
+                  pages.map(page => <button
+                      className={currentPage === page ? 'btn bg-orange-500 text-xl font-bold text-white' : 'btn btn-outline border-orange-500 border-4 text-xl'}
+                      onClick={() => setCurrentPage(page)}
+                      key={page}
+                  >{page}</button>)
+              }
+              <button className="btn btn-outline border-orange-500 border-4 md:w-[7rem] md:text-lg" onClick={handleNextPage}>Next</button>
+              <select className="btn bg-orange-500 text-xl text-white" value={itemsPerPage} onChange={handleItemsPerPage} name="" id="">
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                  <option value="50">50</option>
+              </select>
+          </div>
 
             
         </div>

@@ -9,7 +9,7 @@ const AllClassesCard = ({classs}) => {
             <div className="relative">
                 <img className="rounded-tr-[5rem] h-[14rem] w-full" src={classs?.image} alt="" />
 
-                <div className="w-[4.625rem] h-[2.06rem] flex gap-2 justify-center items-center bg-white  rounded-[1.25rem] absolute top-[11rem] left-4">
+                <div className="w-[5.625rem] h-[2.06rem] flex gap-2 justify-center text-white font-extrabold items-center bg-[#FB9C46]  rounded-[1.25rem] absolute top-[11rem] left-4">
                     <img src={user} alt="" />
                     <p>{classs?.enrollCount}</p>
                 </div>

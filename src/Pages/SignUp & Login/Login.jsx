@@ -57,7 +57,7 @@ const Login = () => {
   return (
     <div className="flex justify-evenly items-center mt-28 flex-col lg:flex-row">
       <img src="https://i.ibb.co/5cjXn5m/hr-Mdhw3fl-V.gif" alt="" />
-      <div className="w-[28rem]">
+      <div className="md:w-[28rem]">
         <h1 className="text-black text-center text-[2.5rem] font-semibold">Sign In</h1>
 
         <form onSubmit={handleSubmit(onSubmit)}>

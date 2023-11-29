@@ -80,7 +80,7 @@ const SignUp = () => {
   return (
     <div className="flex justify-evenly items-center mt-12 flex-col lg:flex-row">
       <img src="https://i.ibb.co/mS89dpC/E9-Tta-Yg-KZu.gif" alt="" />
-      <div className="w-[28rem]">
+      <div className="md:w-[28rem]">
         <h1 className="text-black text-center text-[2.5rem] font-semibold">Sign Up</h1>
 
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -93,14 +93,14 @@ const SignUp = () => {
 
           <p className="text-[#444] mt-5 text-xl font-semibold">Photo</p>
           <div>
-            <input type="text" {...register("image", { required: true })} name="image" className="file-input file-input-bordered  w-full mt-2 px-4 h-[3.5rem]" />
+            <input type="text" {...register("image", { required: true })} name="image" placeholder="Enter Photo URL" className="file-input file-input-bordered  w-full mt-2 px-4 h-[3.5rem]" />
           </div>
 
           {errors.image && <span>This field is required</span>}
 
           <p className="text-[#444] mt-5 text-xl font-semibold">Email</p>
 
-          <input className="w-full mt-2 h-[3.5rem] text-gray-700 placeholder:text-[#A1A1A1] text-lg outline-none pl-[1.81rem] rounded-lg border-2 border-[#D0D0D0] bg-white" type="email" name="email" id="" placeholder="Type here" {...register("email", { required: true })} />
+          <input className="w-full mt-2 h-[3.5rem] text-gray-700 placeholder:text-[#A1A1A1] text-lg outline-none pl-[1.81rem] rounded-lg border-2 border-[#D0D0D0] bg-white" type="email"  name="email" id="" placeholder="Type here" {...register("email", { required: true })} />
 
           <p className="text-[#444]  text-xl mt-4 font-semibold">Password</p>
 

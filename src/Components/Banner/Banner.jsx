@@ -7,7 +7,7 @@ import { MdPlayLesson } from "react-icons/md";
 
 const Banner = () => {
     return (
-        <div className="flex flex-col-reverse lg:flex-row justify-between items-center lg:px-[8%] mt-20 pt-20">
+        <div className="flex flex-col-reverse lg:flex-row justify-between items-center lg:px-[8%] md:mt-20 pt-20">
 
             <div data-aos="fade-up" className="px-4 lg:px-0 mt-6 lg:mt-0">
             

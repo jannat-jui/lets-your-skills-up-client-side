@@ -184,10 +184,10 @@ const EnrollClassDetails = () => {
                         <tr>
                             <th className="text-white font-semibold"></th>
 
-                            <th className="text-black text-xl  font-bold">Title</th>
-                            <th className="text-black text-xl  font-bold">Description</th>
-                            <th className="text-black text-xl  font-bold">Deadline</th>
-                            <th className="text-black text-xl  font-bold">Submit</th>
+                            <th className="text-black text-xs md:text-base lg:text-xl  font-bold">Title</th>
+                            <th className="text-black text-xs md:text-base lg:text-xl  font-bold">Description</th>
+                            <th className="text-black text-xs md:text-base lg:text-xl  font-bold">Deadline</th>
+                            <th className="text-black text-xs md:text-base lg:text-xl  font-bold">Submit</th>
 
                         </tr>
                     </thead>
@@ -195,13 +195,13 @@ const EnrollClassDetails = () => {
                         {/* row 1 */}
                         {
                             filterAssignment.map((assignment, index) => <tr key={assignment._id}>
-                                <th className="text-lg">{index + 1}</th>
-                                <td className="text-lg">{assignment?.title}</td>
-                                <td className="text-lg">{assignment?.description}</td>
-                                <td className="text-lg">{assignment?.deadline}</td>
+                                <th className="text-xs md:text-base lg:text-lg">{index + 1}</th>
+                                <td className="text-xs md:text-base lg:text-lg">{assignment?.title}</td>
+                                <td className="text-xs md:text-base lg:text-lg">{assignment?.description}</td>
+                                <td className="text-xs md:text-base lg:text-lg">{assignment?.deadline}</td>
 
                                 <td className="">
-                                <button onClick={()=>handleSubmitAssignment(assignment?._id)} className="btn w-[8rem] h-[3rem] text-xl  rounded-md  btn-neutral border-none ">Submit</button>
+                                <button onClick={()=>handleSubmitAssignment(assignment?._id)} className="btn md:w-[8rem] h-[3rem] md:text-xl  rounded-md  btn-neutral border-none ">Submit</button>
 
                                 </td>
 

@@ -136,13 +136,13 @@ const MyClass = () => {
                                     classss.status === 'pending' && <button className="mt-4 btn btn-error bg-orange-800 text-white text-lg flex-1">Pending</button>
 
                                 }
-                                <Link to={`/dashboard/update-class/${classss._id}`}><button className="mt-4 btn btn-error text-white text-lg flex-1">Update</button></Link>
+                                <Link to={`/dashboard/update-class/${classss._id}`}><button className="mt-4 btn btn-info text-white text-lg flex-1">Update</button></Link>
                                 <button onClick={() => handleDeleteItem(classss)} className="mt-4 btn btn-error text-white text-lg flex-1">Delete</button>
                             </Typography>
 
                             <Typography color="blue-gray" className="font-medium" textGradient>
                                 {
-                                    classss.status === 'approved' ? <Link to={`/dashboard/myclass/${classss._id}`}><button className="mt-4 btn btn-error text-white text-lg w-full">See Details</button></Link>
+                                    classss.status === 'approved' ? <Link to={`/dashboard/myclass/${classss._id}`}><button className="mt-4 btn bg-orange-500 text-white text-lg w-full">See Details</button></Link>
                                         :
                                         <button disabled className="mt-4 btn btn-error text-white text-lg w-full">See Details</button>
                                 }
@@ -156,18 +156,18 @@ const MyClass = () => {
             </div>
             
             <div className="mt-32">
-            <div className='text-center mb-10  space-x-6 absolute bottom-0  left-[45%]'>
+            <div className='text-center mb-10 space-x-4 md:space-x-6 mt-20'>
               
-              <button className="btn  btn-outline border-orange-500 border-4 w-[7rem] text-lg" onClick={handlePrevPage}>Prev</button>
+              <button className="btn  btn-outline border-orange-500 border-4 md:w-[7rem] md:text-lg" onClick={handlePrevPage}>Prev</button>
               {
                   pages.map(page => <button
-                      className={currentPage === page ? 'btn bg-orange-500 text-xl font-bold text-black' : 'btn btn-outline border-orange-500 border-4 text-xl'}
+                      className={currentPage === page ? 'btn bg-orange-500 text-xl font-bold text-white' : 'btn btn-outline border-orange-500 border-4 text-xl'}
                       onClick={() => setCurrentPage(page)}
                       key={page}
                   >{page}</button>)
               }
-              <button className="btn btn-outline border-orange-500 border-4 w-[7rem] text-lg" onClick={handleNextPage}>Next</button>
-              <select className="btn bg-orange-500 text-xl" value={itemsPerPage} onChange={handleItemsPerPage} name="" id="">
+              <button className="btn btn-outline border-orange-500 border-4 md:w-[7rem] md:text-lg" onClick={handleNextPage}>Next</button>
+              <select className="btn bg-orange-500 text-xl text-white" value={itemsPerPage} onChange={handleItemsPerPage} name="" id="">
                   <option value="10">10</option>
                   <option value="20">20</option>
                   <option value="50">50</option>

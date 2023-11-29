@@ -21,24 +21,24 @@ const HomeStats = () => {
     // console.log(stats)
 
     return (
-        <div className="flex gap-4 flex-col lg:flex-row items-center justify-around px-[8%] mt-32">
+        <div className="flex gap-4 flex-col lg:flex-row items-center justify-around md:px-[8%] md:mt-32">
 
             <div className="flex gap-2 md:gap-16 ">
                 
-                <div  data-aos="zoom-out-up" className="text-center space-y-4 border-2 p-4 rounded-tr-3xl cursor-pointer hover:bg-gray-300 w-[8rem] md:w-[10rem] flex flex-col justify-center items-center border-[#FB9C46]">
+                <div  data-aos="zoom-out-up" className="text-center space-y-4 border-2 p-4 rounded-tr-3xl cursor-pointer hover:bg-gray-300 w-[7rem] md:w-[10rem] flex flex-col justify-center items-center border-[#FB9C46]">
                     <FaUsers className="text-[3rem]"/>
                     <h1 className="text-4xl text-[#FB9C46] font-bold">{stats?.users}</h1>
                     <p className="text-lg font-medium">Total User</p>
                 </div>
 
-                <div  data-aos="zoom-out-down" className="text-center space-y-4 border-2 p-4 rounded-tr-3xl cursor-pointer hover:bg-gray-300 border-[#FB9C46] w-[8rem] md:w-[10rem] flex flex-col justify-center items-center">
+                <div  data-aos="zoom-out-down" className="text-center space-y-4 border-2 p-4 rounded-tr-3xl cursor-pointer hover:bg-gray-300 border-[#FB9C46] w-[7rem] md:w-[10rem] flex flex-col justify-center items-center">
                 <SiGoogleclassroom className="text-[3rem]" />
 
                     <h1 className="text-4xl text-[#FB9C46] font-bold">{stats?.classItems}</h1>
                     <p className="text-lg font-medium">Total Classes</p>
                 </div>
 
-                <div  data-aos="zoom-out-up" className="text-center border-[#FB9C46] space-y-4 border-2 p-4 rounded-tr-3xl cursor-pointer hover:bg-gray-300  w-[8rem] md:w-[10rem] flex flex-col justify-center items-center">
+                <div  data-aos="zoom-out-up" className="text-center border-[#FB9C46] space-y-4 border-2 p-4 rounded-tr-3xl cursor-pointer hover:bg-gray-300  w-[7rem] md:w-[10rem] flex flex-col justify-center items-center">
                 <PiStudentFill className="text-[3rem]" />
                     <h1 className="text-4xl text-[#FB9C46] font-bold">{stats?.enrolls}</h1>
                     <p className="text-lg font-medium">Total Enrollment</p>
@@ -48,7 +48,7 @@ const HomeStats = () => {
 
 
             <div>
-                <img  data-aos="fade-up" src={statbg} alt="" />
+                <img src={statbg} alt="" />
 
             </div>
 
