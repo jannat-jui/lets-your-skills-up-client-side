@@ -1,5 +1,7 @@
 ## (assignment12_category_0007) LetsSkillUp-client-side Live Link: https://letsyourskillup.web.app/
 
+## Server Side Code Link: https://github.com/jannat-jui/lets-your-skills-up-server-side
+
 ## Project features
 
 - **This project utilizes the MERN stack (MongoDB, Express.js, React, Node.js) for building a full-stack web application.**
@@ -18,3 +20,24 @@
 
 - **The admin dashboard empowers administrators to handle teacher requests, manage user roles, and oversee the platform's overall operation, including monitoring class feedback.**
 
+## Technologies Used
+
+- Node.js
+- Express.js
+- MongoDB
+- React.js
+- Firebase Authentication
+- JWT (JSON Web Tokens)
+- Tanstack Query
+- Other relevant libraries and frameworks
+
+## Getting Started
+
+To run this project locally, follow these steps:
+
+1. Clone the repository.
+2. Install dependencies using `npm install`.
+3. Set up the MongoDB database.
+4. Configure Firebase authentication credentials.
+5. Start the server using `npm start`.
+6. Start the client using `npm run start-client`.
